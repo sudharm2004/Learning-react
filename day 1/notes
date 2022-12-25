@@ -1,0 +1,51 @@
+24/12/22
+Q.read about emmet  
+Emmet is a plugin for text editors that allows users to write and expand abbreviations and snippets of HTML, XML, and other structured code. It is designed to be a fast and efficient way to write and edit code, by allowing users to quickly expand short, predefined code snippets into longer blocks of code.
+
+Q.what is cdn
+A content delivery network (CDN) is a system of distributed servers that deliver web content to users based on their geographic location. CDNs are used to improve the performance and availability of websites, by reducing the distance that data has to travel and providing redundant servers to handle traffic spikes.
+
+CDNs work by storing copies of a website's static content, such as images, JavaScript files, and CSS files, on servers located in strategic locations around the world. When a user accesses a website that uses a CDN, the CDN will serve the content from the server that is closest to the user's location. This helps to reduce the amount of time it takes for the content to load, improving the user experience.
+
+CDNs also help to improve the availability of websites by providing redundant servers to handle traffic spikes. If one server becomes overloaded or goes down, the CDN will redirect traffic to other servers in the network, helping to ensure that the website remains available to users.
+
+Overall, CDNs are an important tool for improving the performance and availability of websites, and are used by many large and popular websites to deliver content to users around the world.
+
+Q.what is crossorigin?
+
+Q.Does react append content to root with some existing data or overwrites everything?
+react overwrites everything that is already present in root
+
+Q.i have created two roots in my react page and rendered both of them but only on root is being rendered why?
+In a React application, it is generally not recommended to have multiple root elements in a single page. This is because React expects a single root element to wrap all of the other elements in the component hierarchy. If you try to render multiple root elements in a single page, only the first root element will be rendered, and the rest will be ignored.
+
+Emmet:
+
+https://blog.logrocket.com/type-html-faster-react-emmet-vs-code/
+
+https://dev.to/raaynaldo/speed-up-code-your-html-using-emmet-in-vscode-nesting-operators-201o
+
+Library VS Framework:
+
+https://www.freecodecamp.org/news/the-difference-between-a-framework-and-a-library-bd133054023f/
+
+CDN:
+
+https://www.imperva.com/learn/performance/what-is-cdn-how-it-works/
+
+React VS React DOM:
+
+https://www.geeksforgeeks.org/how-react-and-reactdom-works/
+
+Cross-Origin:
+
+https://www.dofactory.com/html/script/crossorigin
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin
+
+Development VS Production build:
+
+https://react-cn.github.io/react/downloads.html
+
+Async VS Defer
+https://www.youtube.com/watch?v=IrHmpdORLu8
