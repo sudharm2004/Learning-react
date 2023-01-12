@@ -83,9 +83,13 @@ Reference:-https://medium.com/hackernoon/do-i-really-need-package-lock-json-file
 10.type="module":-
 A script tag having type="module" attribute specifies that it to be considered as a Javascript module. It may be importing other Javascript module(s) inside it and becomes a "top-level" module for the imported modules.
 
-11.Hot module reload:-
+11.Hot module replacement:-
 It refers that parcel keeps track of all updation.
 It uses File Watchers algorithm(This algorithm is built in c++).
+Whenever you update something in your code there is no need for you to manually to refresh the page parcel will automatically update it for you.Generally update Independent as well Dependent modules in your project.
+It update the changed modules and then track the module that are affected by the module changed and changes their value as well it does not update whole code every time.
+for eg:-There are 4 module A,B,C,D and now B is changed then it will update the B and reflect it,it will not change A,C,D.
+Now if C use data from B which changes then B will also be changed
 
 12.dist:-
 dist is a faster development build of our project which is hosted on server(local) by parcel.
@@ -114,6 +118,9 @@ It is automatically added by parcel when we are using it.
 Browserslist is a tool that allows specifying which browsers should be supported in your frontend app by specifying "queries" in a config file. It's used by frameworks/libraries such as React, Angular and Vue, but it's not limited to them.
 Reference:-https://browsersl.ist/
 
+17.package.json scripts:-
+scripts are terminal commands that perform a set of actions. 
+To execute your Script, use the ‘npm run <NAME-OF-YOUR-SCRIPT>’ 
 
 
 What we done today:-
