@@ -19,7 +19,16 @@ react overwrites everything that is already present in root
 Q.i have created two roots in my react page and rendered both of them but only on root is being rendered why?
 In a React application, it is generally not recommended to have multiple root elements in a single page. This is because React expects a single root element to wrap all of the other elements in the component hierarchy. If you try to render multiple root elements in a single page, only the first root element will be rendered, and the rest will be ignored.
 
-Q. difference between react and reactdom?
+Q.Async VS Defer
+They are attributes of script tag.
+when a page fetched from server there are two things first html rendering and script file loading.
+Normal script tag:-
+In this when page is loaded the html rendering start and when a script file is encountered the rendering is stopped and file is fetched and executed and once it is done the rendering starts again.
+Script tag with async attribute:-
+In this when page is loaded the html rendering starts and when a script file is encountered the the file is fetched asynchronusly while rendering is going on and once the file is fetched rendering stops and file is executed and after that rendering starts again.
+Script tag with defer attribute:-
+In this when page is loaded the html rendering starts and all script files  encountered are fetched asynchronusly while rendering is going on and once the rendering is done  all fetched files are executed one by one.
+https://www.youtube.com/watch?v=IrHmpdORLu8
 
 Emmet:
 
@@ -49,8 +58,7 @@ Development VS Production build:
 
 https://react-cn.github.io/react/downloads.html
 
-Async VS Defer
-https://www.youtube.com/watch?v=IrHmpdORLu8
+
 
 
 Day 2
@@ -69,27 +77,39 @@ However unlike a normal Javascript file, a module can specify which variables an
 4.Dependencies:-They are all the packages that we need in the project
 
 5.caret vs tilde:-
+The three numbers in a version number represent the major version, minor version, and patch level. They represent the level of change in the software and the level of compatibility with previous versions.
+The first number (the major version) represents a major release of the software that contains significant new features or changes. When the major version number changes, it means that the software has undergone significant changes that might break compatibility with previous versions.
+The second number (the minor version) represents a minor release of the software that contains new features or changes that are backward-compatible with previous versions. When the minor version number changes, it means that the software has undergone changes that add new functionality but do not break compatibility with previous versions.
+The third number (the patch level) represents a patch release of the software that contains bug fixes and other small changes. When the patch level number changes, it means that the software has undergone changes that fix bugs or improve performance but do not add new features or break compatibility with previous versions.
+For example, if a software has version number of "1.2.3" it means that it is major version 1, minor version 2 and patch level 3 of the software.
+
+The caret (^) is used in a package version number to indicate that the package should be updated to the latest version that is compatible with the current version. For example, if a package has a version number of "^1.2.3", it means that it should be updated to the latest version that is compatible with version 1.2.3. This would include any version that starts with "1.2", such as "1.2.4" or "1.2.5", but would exclude "2.0.0" or higher.
+
+The tilde (~) is used in a package version number to indicate that the package should be updated to the latest version that is compatible with the current version, but only within the same minor version number. For example, if a package has a version number of "~1.2.3", it means that it should be updated to the latest version that is compatible with version 1.2.3, but only within the same minor version number. This would include any version that starts with "1.2", such as "1.2.4" or "1.2.5", but would exclude "1.3.0" or higher.
 
 6.Package vs Package-lock-json:-package-lock-json locks and tells you exact version you are using in your system.
 There is no need to put your package-lock-json file in gitignore.It maintains the integrity because it has hash which ensure that version on local and server are same(when you compare them).
 Reference:-https://medium.com/hackernoon/do-i-really-need-package-lock-json-file-321ce29e7d2c#:~:text=If%20you're%20collaborating%20on,where%20npm%20modifies%20either%20package.
 
 7.hash(sha512)
+SHA-512, or Secure Hash Algorithm 512, is a hashing algorithm used to convert text of any length into a fixed-size string. Each output produces a SHA-512 length of 512 bits (64 bytes).
+This algorithm is commonly used for email addresses hashing, password hashing, and digital record verification. SHA-512 is also used in blockchain technology, with the most notable example being the BitShares network.
 
-8.Node module:-contains all the modules of packages(reusable code)
+8.Node module:-It contains all the modules of packages(reusable code)
 
 9.npx:-It means execute using parcel.
 
 10.type="module":-
 A script tag having type="module" attribute specifies that it to be considered as a Javascript module. It may be importing other Javascript module(s) inside it and becomes a "top-level" module for the imported modules.
+When a script file has the type="module" attribute, the browser treats it as a module and parses and executes the script in a specific way. The browser will create a new scope for the module, so that variables, functions, and classes defined within the module are private, and can only be accessed from within the module.
 
 11.Hot module replacement:-
 It refers that parcel keeps track of all updation.
 It uses File Watchers algorithm(This algorithm is built in c++).
-Whenever you update something in your code there is no need for you to manually to refresh the page parcel will automatically update it for you.Generally update Independent as well Dependent modules in your project.
+Whenever you update something in your code there is no need for you to manually to refresh the page parcel will automatically update it for you.Generally it updates Independent as well as Dependent modules in your project.
 It update the changed modules and then track the module that are affected by the module changed and changes their value as well it does not update whole code every time.
 for eg:-There are 4 module A,B,C,D and now B is changed then it will update the B and reflect it,it will not change A,C,D.
-Now if C use data from B which changes then B will also be changed
+Now if C use data from B which changes then C will also be changed
 
 12.dist:-
 dist is a faster development build of our project which is hosted on server(local) by parcel.
@@ -110,7 +130,8 @@ It is minified version of our huge project like we used npm build in webpack(har
 
 14.We should put parcel.cache in gitignore because anything that can be auto generated will be put in gitignore.
 
-15.Transitive dependencies:-a transitive dependency is a library or module that is depended on by another library or module, even though the main application code does not directly depend on it. 
+15.Transitive dependencies:-
+A transitive dependency is a library or module that is depended on by another library or module, even though the main application code does not directly depend on it. 
 For example, suppose that a React application depends on library A, which in turn depends on library B. In this case, library B is a transitive dependency of the React application, because the application code does not directly depend on it, but it is required for library A to work correctly.
 
 16.BrowserList:-It is a package used to make your web app compatible for older versions of browser.

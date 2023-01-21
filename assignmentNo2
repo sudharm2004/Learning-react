@@ -32,9 +32,11 @@ VIDEO REFERENCE :- https://youtu.be/3UWlufSzO4k
 6)what is difference between main and source in package.json?
  the main field is used to specify the primary JavaScript file that should be executed when the package is imported or required, it's used by package manager to run the package. The source field is used to specify the source code of the package, it's less common than the main field and it's not used by the package manager to execute the package but it's used by some other tools to understand the package source code.
 
- 7)Superpowers of parcel?
+7)What is .parcel-cache?
+parcel stores the information of your build and uses it your while rebuilding it.The bundler do this so that it does not have to build the app again rather it uses previous information and helps in building faster.It's a reason behing faster development mode in parcel.
+
+ 8)Superpowers of parcel?
  Parcel advantages:-
-0)
 1) bundling our code
 2)minifying the code
 3)removing all the console log(cleaning the code)
@@ -46,3 +48,43 @@ VIDEO REFERENCE :- https://youtu.be/3UWlufSzO4k
 9)It manages your port number.
 10)It uses consistent hashing algorithm.
 11)It has zero configuration.
+
+9)What is npx?
+npm and npx are both command-line tools that are included with Node.js and are used to manage and install packages for Node.js projects, but they have slightly different use cases and functions.
+npm is best used for installing and managing packages that your project depends on, and npx is best used for running one-off commands or for trying out packages that you don't want to install globally.
+When you run a command using npx and the package is not found in the local node_modules directory or in the globally installed packages, npx will automatically download the package from the npm registry and install it in a temporary location.
+The package will be downloaded and installed in a temporary directory that is specific to the current command that you are running. This means that the package will only be available for the duration of the command that you are running, and it will not be installed globally or in the local node_modules directory of your project.
+
+10)dependencies vs dev-dependencies?
+dependencies is used to specify the packages that are required for your project to run in production. These are the packages that are needed for your application to function correctly and are necessary for the end-user. Examples of dependencies include libraries and frameworks that your application uses, such as React or Express.
+
+devDependencies is used to specify the packages that are required for development and testing of your project but are not required for the application to run in production. These are the packages that are only needed during the development and testing phase, such as testing libraries, linters, transpilers, etc.
+
+11)What is tree shaking?
+Tree shaking is a technique used by modern JavaScript bundlers (such as webpack and Rollup) to eliminate unused code from the final bundle. The goal of tree shaking is to reduce the size of the bundle and improve the performance of the application by only including the code that is actually used by the application.
+The process of tree shaking is based on the static analysis of the import and export statements in the source code. The bundler starts with the entry point of the application and follows the import statements to determine which modules are used by the application. Then it examines the exports of those modules to determine which exports are used by the application. Any modules or exports that are not used by the application are eliminated from the final bundle.
+The term "tree shaking" comes from the idea that the bundler is "shaking" the tree of dependencies to remove the "dead branches" (unused code) and leave only the "live branches" (used code).
+It's worth noting that, tree shaking works best with the ES6 module system which uses explicit import and export statements, because it allows the bundler to determine which code is used and which is not. It's less effective with CommonJS, the older module system used by Node.js, because it uses a require function that can be called dynamically at runtime, making it difficult for the bundler to determine which code is used and which is not.
+Tree shaking is a powerful technique for reducing the size of the final bundle and improving the performance of the application, but it does require that your code is written in a certain way (using ES6 modules) and that the bundler you are using supports tree shaking.
+
+Here's an example of how tree shaking works in a simple JavaScript application:
+
+Let's say you have a JavaScript file called main.js that is the entry point of your application. This file imports two modules, moduleA and moduleB:
+
+import { funcA } from './moduleA';
+import { funcB } from './moduleB';
+
+moduleA exports two functions, funcA and funcB
+moduleB exports two functions,  funcB
+
+In this example, main.js only uses the funcA function from moduleA and funcB from moduleB, the other funcB from moduleA is not used by the application.
+
+When the application is built, a JavaScript bundler like webpack or Rollup will analyze the import and export statements in the code, and it will determine that the funcB function from moduleA is not used by the application. So it will eliminate that function from the final bundle, resulting in a smaller bundle size and improved performance.
+
+
+12)What is `.gitignore`? What should we add and not add into it? 
+`.gitignore` is a file in a Git repository that specifies files or directories that should be ignored by Git and not tracked or included in commits.The files that are required only development and auto-generated are added into it.
+
+
+13)what is dist folder?
+The dist (short for "distribution") folder is a common name for the directory that contains the final, deployed version of a web application. This folder typically contains the HTML, CSS, JavaScript, and other assets that make up the application, in a format that is optimized for production use.
