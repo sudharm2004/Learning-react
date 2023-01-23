@@ -1,4 +1,5 @@
 24/12/22
+Day 1 >>>>>
 Q.read about emmet  
 Emmet is a plugin for text editors that allows users to write and expand abbreviations and snippets of HTML, XML, and other structured code. It is designed to be a fast and efficient way to write and edit code, by allowing users to quickly expand short, predefined code snippets into longer blocks of code.
 
@@ -61,7 +62,7 @@ https://react-cn.github.io/react/downloads.html
 
 
 
-Day 2
+Day 2 >>>>>
 
 1.Bundlers:-
 A bundler is a development tool that combines many JavaScript code files into a single one that is production-ready loadable in the browser. A fantastic feature of a bundler is that it generates a dependency graph as it traverses your first code files.
@@ -148,3 +149,106 @@ What we done today:-
 We installed parcel (a bundler) as a dev dependency in our project first.
 We installed react package in our project......we are not using cdn any more.
 We installed react-dom package in our project......we are not using cdn any more.
+
+Day 3 >>>>>>
+1)Babel-plugin-transform-remove-console:- It is used to remove the console logs from your projects.
+
+2)What are plugins
+
+3)what is .babelrc?
+It is a configuration file for babel 
+
+4)React Key Concilation:-Key should be given to children elements of similar types.
+When elements are rendered in a list, React uses the key attribute to keep track of which elements are added, removed, or re-ordered. Without a key, React doesn't have a way to keep track of the elements in the list, so it has to re-render the entire list whenever a change is made.
+
+When React renders a list of elements, it creates a virtual representation of the elements in memory, called the virtual DOM. The virtual DOM is a lightweight representation of the real DOM, and it is used to keep track of the elements that are rendered in the list.
+
+When a change is made to the list, such as an element being added, removed, or re-ordered, React has to update the real DOM to match the virtual DOM. In order to do this, React uses a process called "reconciliation". During reconciliation, React compares the virtual DOM with the real DOM, and it determines which elements have changed and need to be updated.
+
+5)Virtual Dom and Real dom in react
+In React, the virtual DOM (VDOM) is a lightweight representation of the real DOM (Document Object Model). The real DOM is the actual structure of the web page, and it is used by the browser to display the content of the page. The virtual DOM, on the other hand, is a representation of the real DOM that is kept in memory, and it is used by React to efficiently update the real DOM.
+
+The virtual DOM is a tree-like structure, where each node represents an element in the real DOM. When a change is made to the virtual DOM, such as an element being added or removed, React uses a process called "reconciliation" to determine how the real DOM should be updated.
+The use of virtual DOM allows React to minimize the number of changes made to the real DOM, thus making the updates faster and more efficient. This is important because updating the real DOM can be slow and resource-intensive, especially when working with large or complex web pages.
+
+It's worth noting that React's virtual DOM does not physically exist on the page, it only exists in memory and is used to optimize the update process. It's a mechanism that React uses to optimize the update process, making it faster and more efficient
+
+6)JSX
+JSX is not html in javascript..it is a html like syntax in javascript
+Superpowers of jsx:-
+readability,maintainability and protects from cross side scripting
+JSX itself does not directly prevent cross-site scripting (XSS) attacks. However, when used in conjunction with other security measures, it can help to make it more difficult for an attacker to exploit XSS vulnerabilities in a web application.
+
+When you use JSX to build a React application, React automatically escapes any user input that is included in JSX elements. This means that any special characters that could be used to inject malicious code (such as <, >, and &) are converted to their corresponding HTML entities, so that they are not treated as code.
+For example, if an attacker tries to include a script in a user's input like this:
+
+<script>alert("XSS Attack!")</script>
+
+React will automatically escape the special characters, so that it is rendered as plain text on the page, not as a script that can be executed by the browser:
+
+&lt;script&gt;alert("XSS Attack!")&lt;/script&gt;
+
+7)What is difference between html and jsx
+
+8)what is babel and how it is used for transpiling jsx or es6 code?
+Whenever you run build or start command in parcel first of all babel is used to transpile(convert jsx to normal javascript,convert to compatible with previous versions of browsers) the whole javascript code
+Babel takes jsx and internally uses react.createElement to convert into object(object created by react.createElement) and then transform it into dom
+BABEL=>JSX=>react.createElement=>OBJECT=>DOM
+
+REACT CODE:-
+const Header=()=>{
+    return (
+        <h1>hello world! through functional component</h1>
+    )
+}
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Header/>);
+
+CODE TRANSPILED BY BABEL:-
+const Header = () => {
+  return React.createElement("h1", null, "hello world! through functional component");
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(React.createElement(Header, null));
+
+
+
+When you use Parcel to build a React application, it automatically includes and configures Babel to transpile JSX code into JavaScript that can be understood by web browsers.
+
+Parcel is a web application bundler that can handle many types of files, including JavaScript, CSS, and HTML. One of its features is the ability to automatically detect and handle the dependencies of your application, including transpiling JSX code with Babel.
+
+When you start a development server with parcel, it will look for any .js, .jsx files in your application and it will automatically transpile them using Babel. It will also look for any configuration files like .babelrc or package.json, if it finds any of these configuration files it will use them.
+
+So you don't have to explicitly include Babel as a dependency in your project or configure it to transpile JSX code. Parcel will handle it automatically for you.
+
+When you build your application with parcel, it will look for any JSX elements in your code, it will transpile them using Babel to JavaScript, and bundle them with the rest of your application. So the final output will be a single JavaScript file that contains all the code in your application, including the transpiled JSX code, that can be understood by web browsers.
+
+In summary, when you use Parcel to build a React application, it automatically includes and configures Babel to transpile JSX code into JavaScript that can be understood by web browsers. You don't have to explicitly include Babel as a dependency or configure it, Parcel will handle it automatically for you. It will look for any JSX elements in your code, transpile them using Babel and bundle them with
+
+9)Component=>
+Component is a JavaScript class or function that represents a reusable piece of UI. 
+Functional components: These are JavaScript functions that accept props as an argument and return a JSX element. They don't have their own state and lifecycle methods.
+Class components: These are JavaScript classes that extend the React.Component class. They have their own state and lifecycle methods. They also accept props as an argument and return a JSX element, but the way that it is done is different from functional components.
+Functional component
+Functional component is normal function that returns a jsx.
+Name of a component starts with a capital letter.
+
+10)Component Composition
+Component composition is a technique in React where you can build a complex component by combining smaller, simpler components. The smaller components are called "composable components" or "sub-components" and the complex component is called the "composite component."
+For eg:-
+function WelcomeDialog() {
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <p>Thank you for visiting our site.</p>
+      <Button label="Close" onClick={() => console.log("closing dialog")} />
+    </div>
+  );
+}
+
+function Button({ label, onClick }) {
+  return <button onClick={onClick}>{label}</button>;
+}
+
+In this example, the WelcomeDialog component is the composite component, and the Button component is the sub-component. The WelcomeDialog component renders the Button component inside its JSX.

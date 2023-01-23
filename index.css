@@ -1,3 +1,25 @@
-#root{
-    color:blue;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+header{
+    padding:20px;
+    background-color:blue;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+}
+#headerSearchBar
+{
+    width:340px;
+    height:30px;
+    border-radius:5px;
+}
+.searchBar button{
+    height:100%;
+    width:40px;
+    border-radius:5px;
+
 }
