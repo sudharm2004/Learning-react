@@ -1,0 +1,42 @@
+Q.1)Is es6 and jsx mandatory for react?
+No,es6 and jsx are not mandatory for react...we can also use react createElement in order to create elements and render them on page
+
+Q.2)How to write comments in jsx?
+JSX is allows to run JS code within curly brackets we can js comments syntax and write comments in curly braces
+for eg:-
+{//Comment}
+<jsx expression>
+
+Q.3)What is <React.Fragment><React.Fragment> and <></>
+Any jsx expression must have single root parent.So you create a div with no classess/id and then add include all children elements into it.But this forces you to add unnecessary extra div in your code.
+for eg:-
+const header=()=>{
+  <div>
+    <Logo/>
+    <NavItems/>
+  </div>
+}
+Now React.Fragment is component that is exported by React and you can use it instead of a extra div as shown below.
+const header=()=>{
+  <React.Fragment>
+    <Logo/>
+    <NavItems/>
+  </React.Fragment>
+}
+This short hand syntax for <React.Fragment></React.Fragment> is <></>
+
+Q.4)What is virtual dom?
+The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+Since “virtual DOM” is more of a pattern than a specific technology, people sometimes say it to mean different things. In React world, the term “virtual DOM” is usually associated with React elements since they are the objects representing the user interface. 
+
+Q.5)
+Reconciliation is the process in React of updating the virtual DOM (a lightweight in-memory representation of the actual DOM) with changes in the component's state and props. When a component's state or props change, React will compare the virtual DOM before and after the change, and only update the actual DOM with the minimum necessary changes.
+
+React uses a diffing algorithm, also known as the reconciliation algorithm, to update the virtual DOM and determine which components need to be re-rendered in the actual DOM. The diffing algorithm compares the current virtual DOM tree with the updated virtual DOM tree and identifies the differences between them, allowing React to update the DOM in an optimized and efficient way.
+
+When React diffs two trees, it starts by comparing the two root elements of the trees. Depending on the types of the root elements, the behavior of the diffing algorithm will be different.
+
+If the root elements are of different types, React considers them to be completely different trees, and will unmount the entire tree corresponding to the old root element and mount a new tree corresponding to the new root element.
+
+If the root elements are of the same type, React will compare their properties and children recursively to determine the minimum set of changes needed to update the actual DOM. React uses the key property of elements to help determine which elements are stable across different renders, which can make the diffing process more efficient.
+https://reactjs.org/docs/reconciliation.html

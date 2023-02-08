@@ -4,22 +4,68 @@
     box-sizing:border-box;
 }
 
-header{
-    padding:20px;
-    background-color:blue;
+.nav{
+    display: flex;
+    justify-content: space-between;
+    border:2px solid black;
+    padding:5px;
+    background-color:black;
+    opacity:0.8; 
     color:white;
-    display:flex;
-    justify-content:space-between;
+    align-items:center;
 }
-#headerSearchBar
+.nav-logo{
+    width:150px;
+    background-color:transparent;
+}
+.nav-items{
+    list-style-type:none;
+    display:flex; 
+}
+.nav-items li{
+    margin:5px;
+    border:2px solid white;
+    padding:2px;
+    border-radius:2px;
+}
+.Search-container{
+    margin:10px;
+}
+.Search-Btn
 {
-    width:340px;
-    height:30px;
-    border-radius:5px;
+    padding:5px;
 }
-.searchBar button{
-    height:100%;
-    width:40px;
+.restaurantlist{
+    margin:10px;
+    display:flex;
+    flex-wrap:wrap;
+    /* justify-content:space-between; */
+}
+.restaurantcard
+{
+    width:280px;
+    padding:10px;
     border-radius:5px;
-
+    margin:10px;
+    box-sizing:border-box;
+}
+.restaurantcard span{
+    font-size:13px;
+}
+.restaurantcard:hover{
+    cursor:pointer;
+    box-shadow:0 0 20px 0 rgba(0,0,0,0.5);
+}
+.restaurantcard-img{
+    width:100%; 
+}
+.footer{
+    text-align:center;
+    padding:10px;
+    background-color:black;
+    opacity:0.8; 
+    color:white;
+    /* position:absolute;
+    bottom:0;
+    width:100vw; */
 }

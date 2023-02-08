@@ -252,3 +252,83 @@ function Button({ label, onClick }) {
 }
 
 In this example, the WelcomeDialog component is the composite component, and the Button component is the sub-component. The WelcomeDialog component renders the Button component inside its JSX.
+
+11)Type Attribue
+The type attribute is used to specify the type of script is being used
+
+Day 4 >>>>>>
+1)Any jsx expression include only one root parent within which all children elements are included and further child elements can be included in those children elements.
+
+2)React.Fragment
+Any jsx expression must have single root parent.So you create a div with no classess/id and then add include all children elements into it.But this forces you to add unnecessary extra div in your code.
+for eg:-
+const header=()=>{
+  <div>
+    <Logo/>
+    <NavItems/>
+  </div>
+}
+Now React.Fragment is component that is exported by React and you can use it instead of a extra div as shown below.
+const header=()=>{
+  <React.Fragment>
+    <Logo/>
+    <NavItems/>
+  </React.Fragment>
+}
+This short hand syntax for <React.Fragment></React.Fragment> is <></>
+
+3)Can we use React.Fragment in React.Fragment?
+Yes of course!
+
+4)join array items?
+You can join array items in JavaScript using the join method. This method concatenates all elements of an array into a single string, separated by a specified separator.
+for eg:-
+let arr = [1, 2, 3, 4];
+let str = arr.join(', ');
+console.log(str); // Output: "1, 2, 3, 4"
+
+
+5)Config driven ui?
+In this UI changes according to the data provided which it means it is driven by configuration provided by backend.
+for eg:- swiggy don't have add carousels for customer in maharashtra then it will get data from backend which provides config about not to show carousel ads while other location it may show the carousel ads.
+
+6)optional chaining?
+The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called is undefined or null, it returns undefined instead of throwing an error.
+The ?. operator is like the . chaining operator, except that instead of causing an error if a reference is nullish (null or undefined), the expression short-circuits with a return value of undefined. When used with function calls, it returns undefined if the given function does not exist.
+
+7)What is cloudinary id?
+
+8)Spread operator?
+
+9)diffing algorithm,react fiber?
+diffing algorithm is an algorithm used by react in order to differ the old virtual dom and new virtual dom and find the changes/updates that are made and to be reflected in the real dom.
+It is based no two assumptions:-
+1)If the root elements are different then it will create completely different tree hence previous dom is unmounted completely and new virtual dom is rendered.
+2)If root elements are same then it compares attributes then it compares childrens recursively.If a parent element has multiple same elements in it then key is used to compare them.
+
+10)why not to use index as a key in react?
+In React, keys help identify which items have changed, are added, or are removed. Using the index of an item as a key value is discouraged because it can lead to unexpected behavior when items are reordered or added/removed.
+Imagine you have a list of items that you are rendering using map function, with each item being assigned a unique key. If the items in the list change frequently (e.g. being added, removed, or reordered), the index of each item will also change. When this happens, React will re-render the entire list and treat the new list as a completely different set of elements from the previous list, even if some of the items are the same. This can cause performance problems because React will need to re-render the entire list each time there is a change, instead of just updating the specific elements that have changed.
+
+Day 5 >>>>>>
+1)What are imports and exports
+
+2)Input tag not working??
+A component in React is updated when its state or props change. React will re-render the component whenever a change is detected, which ensures that the component's output is updated with the latest data.
+When you create a input tag in react and try to enter input in it you are not able to do it because
+If you have not defined a onChange event handler for an input in React, it may not work because the input's value will not change when the user types in it. This is because React's state management system relies on the onChange event to detect changes in the value of an input element and update the state accordingly. Without the onChange event handler, the input's value will remain unchanged, and the user will not be able to enter any text. To fix this issue, you should add an onChange event handler to the input element and use it to update the state with the new value.
+
+3)What is state?
+In React, state refers to the data or variables that determine a component's behavior and render information to the user. It is considered as an internal data structure of a React component and is only accessible within the component.
+
+4)what is react hooks?
+React hooks are nothing but just a bunch of javascript functions.
+In React, hooks are a way to add state and other React features to functional components. They allow developers to use state and other React features without writing a class component.
+
+5)Usestate Hook
+Usestate hook is used to create local state variables in react.
+Usestate returns an array which includes two value first one is variable that stores value and second one is the function used to set(change) the value of function.
+Syntax:-
+const [state, setState] = useState(initialState);
+state is name of variable in which value is stored.
+setState is a function which is used to update the state.The setState function in React updates the component's state and triggers a re-render of the component. When the component's state is updated, React performs a shallow comparison between the current state and the next state to determine if a re-render is necessary. If the comparison determines that the component's render method should be re-executed, the component is re-rendered, and the updated state is reflected in the component's UI.
