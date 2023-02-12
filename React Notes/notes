@@ -296,6 +296,11 @@ for eg:- swiggy don't have add carousels for customer in maharashtra then it wil
 The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called is undefined or null, it returns undefined instead of throwing an error.
 The ?. operator is like the . chaining operator, except that instead of causing an error if a reference is nullish (null or undefined), the expression short-circuits with a return value of undefined. When used with function calls, it returns undefined if the given function does not exist.
 
+For eg:-
+const nestedProp = obj.first?.second;
+
+By using the ?. operator instead of just ., JavaScript knows to implicitly check to be sure obj.first is not null or undefined before attempting to access obj.first.second. If obj.first is null or undefined, the expression automatically short-circuits, returning undefined.
+
 7)What is cloudinary id?
 
 8)Spread operator?
@@ -312,6 +317,7 @@ Imagine you have a list of items that you are rendering using map function, with
 
 Day 5 >>>>>>
 1)What are imports and exports
+Imports and exports are JavaScript language features that allow you to include code from one module in another module. The "import" statement is used to include exports from another module in your code, while the "export" statement is used to make values or functions available for other modules to use. Imports and exports allow you to modularize your code and share functionality between different parts of your application.
 
 2)Input tag not working??
 A component in React is updated when its state or props change. React will re-render the component whenever a change is detected, which ensures that the component's output is updated with the latest data.
@@ -324,6 +330,7 @@ In React, state refers to the data or variables that determine a component's beh
 4)what is react hooks?
 React hooks are nothing but just a bunch of javascript functions.
 In React, hooks are a way to add state and other React features to functional components. They allow developers to use state and other React features without writing a class component.
+Hooks starts with use keyword.
 
 5)Usestate Hook
 Usestate hook is used to create local state variables in react.
@@ -332,3 +339,293 @@ Syntax:-
 const [state, setState] = useState(initialState);
 state is name of variable in which value is stored.
 setState is a function which is used to update the state.The setState function in React updates the component's state and triggers a re-render of the component. When the component's state is updated, React performs a shallow comparison between the current state and the next state to determine if a re-render is necessary. If the comparison determines that the component's render method should be re-executed, the component is re-rendered, and the updated state is reflected in the component's UI.
+
+Day 6 >>>>>>
+1)What are microservices?
+Microservices is an architectural style that structures an application as a collection of small, independent services that communicate with each other through APIs. Each microservice is focused on a specific business capability and can be developed, deployed, and scaled independently of the other services in the application. This approach enables faster development, easier maintenance, and greater scalability compared to a monolithic architecture where everything is tightly coupled and deployed as a single unit.
+ 
+for eg:- 
+There is different team and project for UI,BackEnd,Logs,Notification,etc.
+
+2)What is useeffect?
+useEffect is a Hook in React that lets you synchronize a component with an external system. It can be used to fetch data from an API, handle user events, update the document title, and many other things.
+
+The useEffect function takes two arguments:
+
+A)A callback function that performs the side effect.
+B)An optional dependencies array, which lets you control when the effect should fire.
+
+Useeffect callback function is called after the render.
+
+We useeffect(componentDidMount in class based component) for api call because first we render with shimmer or dummy ui until we fetch data and once we fetch data then we update state and render the real data.
+
+3)What is shimmering effect?
+Shimmer effects are loading indicators used when fetching data from a data source that can either be local or remote. It paints a view that may be similar to the actual data to be rendered on the screen when the data is available.
+
+4)What is conditional rendering?
+Conditional rendering in React refers to the practice of rendering different components or elements in the UI based on certain conditions. For example, you may want to display a specific component to a user based on whether they are logged in or not. 
+
+5)In react javascript expressions can executed in curly braces but javascript statements cannot be executed why?
+In JavaScript, expressions are pieces of code that return a value. They can be as simple as a single value like 5, or as complex as a function call, like Math.max(5, 10).
+
+On the other hand, statements are complete units of execution. They don't return a value, but instead carry out some action, such as declaring a variable let x = 5, or defining a loop for (let i = 0; i < 10; i++).
+
+In React, the curly braces are used to embed expressions, which return a value, in JSX code. On the other hand, JavaScript statements do not return a value, they execute actions. So, including a JavaScript statement inside the curly braces would not make sense, as it would not have any value to be embedded in the JSX. That's why JavaScript statements cannot be executed within curly braces in React.
+
+6)What is monolith architecture?
+Monolithic architecture is a software design pattern where the entire application is built as a single, independent unit. In a monolithic architecture, all the components of the system, such as the user interface, business logic, and database access, are tightly integrated into a single process or application. The entire application runs on a single server and communicates through a single database. Changes to the system often require a complete rebuild and redeployment of the entire application.
+For example, consider a website for an e-commerce business that includes a shopping cart, payment gateway, product catalog, and order management system. In a monolithic architecture, all these components would be tightly integrated and deployed as a single, monolithic application.
+
+7)What is async and await?
+Async and Await are two keywords in JavaScript that are used to handle asynchronous operations in a more synchronous manner. The async keyword is used to declare an asynchronous function. The await keyword is used inside an asynchronous function to wait for the resolution of a Promise and to get the resolved value. With await, the code inside the function is blocked until the awaited Promise is resolved, making it look like a synchronous operation. This helps to simplify the handling of asynchronous operations and eliminates the need for callback functions and chaining Promises.
+
+Day 7 >>>>>>
+1)Never create a component inside an component
+
+2)Never create Local state variable(state/usestate) in if-else condition or loops because this will create a incosistency that causes confusion for react.You should not create state variables in if-else statements or in loops in React because they may not be updated properly or may cause unexpected behavior. When a state variable is updated inside an if-else statement or a loop, it may not trigger a re-render of the component and cause unexpected behavior. Additionally, state variables should only be updated using the setState method to ensure that the component is re-rendered whenever the state changes. When you create a state variable inside an if-else statement or a loop, it becomes a local variable, which is not associated with the state of the component and will not trigger a re-render when it changes.
+
+3)createBrowserRouter is the function that an array of objects as argument in which each object includes path and component related to it.Basically it is used to create router.
+for eg:-
+const appRouter=createBrowserRouter([
+  {
+    path:'/',
+    element:<Applayout/>
+  },
+  {
+    path:'/about',
+    element:<About/>
+  }
+])
+
+4)RouterProvider
+In order to provide router to your router we use RouterProvider in render in which we pass a prop router={appRouter}
+for eg:-
+root.render(<RouterProvider router={appRouter}>)
+
+5)errorElement
+It is used to show the component that you want to display if invalid url/path is entered.
+for eg:-
+const appRouter=createBrowserRouter([
+  {
+    path:'/',
+    element:<Applayout/>
+    errorElement:<Error/>
+  },
+  {
+    path:'/about',
+    element:<About/>
+  }
+])
+
+6)useRouteError
+It is hook that returns a object that includes the information about error related to route.
+
+7)Single Page Application
+An SPA (Single-page application) is a web app implementation that loads only a single web document, and then updates the body content of that single document via JavaScript APIs such as XMLHttpRequest and Fetch when different content is to be shown.
+A single-page application (SPA) is a web application or website that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server. In an SPA, a single HTML page is dynamically updated as the user interacts with the application, giving the feeling of a smooth and fast user experience.
+
+8)Two types of routing
+server side routing
+client side routing
+
+9)Link component
+Link component is used to link to routes.It does not reload the whole pages.
+
+10)Nested Routing
+If you want to load/show <About/> component when going to '/about' route but you want your header and footer there so you want replace <Body/> with <About/> for '/about' route this is called Nested Routing.
+
+Outlet:-
+<Outlet/> is a component which includes all the childrens according to route.
+
+foreg:-
+const Applayout=()=>{
+    return (
+        <>  
+        <Header/>
+        <Outlet/>
+        <Footer/>
+        </>
+    );
+}
+
+const appRouter=createBrowserRouter([
+    {
+        path:'/',
+        element:<Applayout/>,
+        errorElement:<Error/>,
+        children:[
+            {
+                path:'/',
+                element:<Body/>
+            },
+            {
+                path:'/about',
+                element:<About/>
+            }
+        ]
+    }
+   
+])
+
+11)useParams
+It is a hook provided by react-router-dom which gives parameters in the current url/path.
+
+12)Object.values
+In JavaScript, Object.values is a method that returns an array of the values of all enumerable properties of an object. It takes an object as an argument and returns an array of its values. For example:
+For eg:-
+let obj = { a: 1, b: 2, c: 3 };
+let values = Object.values(obj);
+console.log(values); // [1, 2, 3]
+
+13)What happens when you console.log(useState())?
+It logs a function in the console which shows that useState() is nothing but a javascript function at the end.
+
+14)Nested Routing More deeply
+Suppose you want to show profile in about on path /about/profile you can do as following
+const Applayout=()=>{
+    return (
+        <>  
+        <Header/>
+        <Outlet/>
+        <Footer/>
+        </>
+    );
+}
+
+const appRouter=createBrowserRouter([
+    {
+        path:'/',
+        element:<Applayout/>,
+        errorElement:<Error/>,
+        children:[
+            {
+                path:'/',
+                element:<Body/>
+            },
+            {
+                path:'/about',
+                element:<About/>,
+                children:[
+                  {
+                    //do not do '/profile' cause server will assume path localhost:1234/profile and only profile means you want to
+                    //append it to existing path/route i,e, to  localhost:1234/about/profile
+                    path:'profile'
+                    element:<Profile/>
+                  }
+                ]
+            },
+            {
+                path:'/restaurant/:id',
+                element:<RestaurantDetails/>
+            }
+        ]
+    }
+   
+])
+
+Day 8 >>>>>>
+1)We cannot create class based component without extending a class by React.Component and using render method
+
+2)render method is a method in the class based component that return some JSX.When a class-based component is called in the code, an instance of the component is created and rendered. The component's render method is then used to generate the JSX that represents the component's UI.
+
+3)Constructor
+It is a method in class based component/class that is called first.
+every class based component has constructor which takes props as argument and state are declared and intialised in the constructor.
+constructor(props)
+{
+  super(props)
+  this.state={
+    state1=value,
+    state2=value
+  };
+}
+
+4)Props in class based components
+To access props in class-based components, you can use the "this.props" object. Props are passed to the component as arguments to the constructor and can be accessed using the "this" keyword inside the component.
+
+5)state and updating states in class based components
+To use state in class-based components, you need to initialize the state in the constructor of the component.To update the state, you can use the setState method, which takes an object that represents the updated state. You should never modify the state directly using assignment (e.g. this.state.count = 1).
+for eg:-
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+    this.incrementCount = this.incrementCount.bind(this);
+  }
+  incrementCount() {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.incrementCount}>Increment</button>
+      </div>
+    );
+  }
+}
+
+
+6)Lifecycle in React
+In REACT class based components constructor is called first(in beginning) then render method is called
+
+7)componentDidMount
+componentDidMount is a lifecycle method in React class-based components. It is called after a component is initially rendered to the DOM.
+
+8)React lifecycle
+React Lifecycle is divided into two phases 
+I)Render Phase:-
+In this phase constructor and render method is called
+II)Commit Phase:-
+In this phase React first actually update the real DOM and then run componentDidMount() method.
+
+So now if there are more than one children let's say there are two childrens then first constructor and render of parent will be called later on constructor and render of first child is called and then constructor and render of second child is called and then componentDidMount of first child and then second child and then of parent is called.
+now this happens because react patches up render phase of multiple childrens and then later on start commit phase for each children .....Now React does this because if it allows for first children to execute componentDidMount and there is api call in it that changes state then it will again goes to rendering phase and committing phase because of which other childrens are delayed/takes more time hence for optimization react does this.
+
+For More Understanding:-https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+9)Research Question:-
+I)Why can i make componentDidMount async but i cannot make callback function in useeffect async
+componentDidMount is a lifecycle method of class components. It's called after the component has mounted and the initial render is complete. This means that the component's DOM nodes have been created and added to the page, and the component's initial state and props have been set. componentDidMount is a good place to perform side effects like making an API call or setting up an event listener.
+
+useEffect, on the other hand, is a hook that allows you to synchronize a component with an external system. For example, you can use useEffect to start a timer or to make an API call and update the component's state based on the response. Unlike componentDidMount, useEffect runs after every render, which includes the initial render. This means that if you want to run a side effect only once, you need to specify this by providing an empty array as the second argument to useEffect.
+
+The reason that useEffect and its cleanup function must return a synchronous function or null, while componentDidMount can return a promise or any value, is because of how React manages and coordinates the effects. When using useEffect, you need to specify when the effect should re-run by providing its dependencies in the second argument. React will re-run the effect whenever any of the dependencies change.
+
+The return value of useEffect is used to clean up any ongoing work before the effect is re-run. For example, you might use the cleanup function to stop a timer or to remove an event listener. Since the cleanup function is used to synchronize with the external system, it must be a synchronous function or null to ensure that React has full control over when and how it is executed.
+
+If you use async in the useEffect or its cleanup function, it could cause unpredictable behavior, as React will not have full control over the timing and sequence of the cleanup and effect functions. In such cases, the cleanup function might not be executed in a timely manner or might not be executed at all, leading to unexpected behavior or memory leaks.
+
+In conclusion, componentDidMount and useEffect are two different tools for performing side effects in React. componentDidMount is a one-time setup method for class components, while useEffect is a hook that allows you to synchronize a component with an external system and run an effect after every render. It's important to understand the difference between these two tools and how to use them properly to ensure that your components behave as expected.
+
+II)Why do we have to write counstructor and super(props) in class based component
+The constructor and super(props) are used in class-based components to set up the initial state and to call the constructor of the parent class.
+
+The constructor is a special method that is called when an object is created from a class. In React, the constructor is used to set up the initial state of the component, to bind event handlers to the instance of the component, or to perform any other setup that is required when a component is first created.
+
+super(props) is used to call the constructor of the parent class. In React, the parent class is React.Component. By calling super(props), you are giving the parent class the opportunity to set up its own state or perform any other initialization that is required before the component is fully created.
+
+It's important to note that the constructor and super(props) are not necessary in every class-based component. In many cases, you can use state initializations and component lifecycle methods without using the constructor and super(props). However, if you need to do more complex setup when the component is created, then the constructor and super(props) are important to include
+
+
+10)What happens if we are making an api call in componentDidMount of a child component?
+In this case first parent's constructor and render method is runned then child's constructor and render method is runned now componentDidMount has an api call and we declared it as async(async componentDidMount) so it will take some time to load and hence parent's componentDidMount method is runned and then componentDidMount of child is runned.
+
+11)Never ever compare react lifecycle with functional components.
+
+12)i have setinterval function with time of 1 second in useeffect with dependency array having no state or props in it in my about componenent but when i navigate to another component and comeback to about component my time for setinterval subsequently increase why?
+
+When you navigate away from a component, React unmounts the component and its state is lost. When you navigate back to the component, a new instance of the component is created and the component is re-mounted.
+
+In this case, since you have a setInterval function running in a useEffect hook, each time you navigate to the component, a new interval is created and starts counting from 1 second. When you navigate away from the component, the previous interval continues running and doesn't stop, even though the component is no longer visible.
+
+When you navigate back to the component, a new interval is created and starts counting from 1 second, so the time displayed in the component will be the sum of the time elapsed in all the previous intervals plus the time elapsed in the current interval.
+
+To fix this issue, you can add a cleanup function to the useEffect hook that stops the previous interval when the component is unmounted. You can do this by returning a function from the useEffect hook that calls clearInterval with the ID of the interval. 
+
+13)When will clean up function of useEffect will be called if i have state/props in its dependency array?
+Yes, you can add a cleanup function to an useEffect hook that has dependencies. In this case, the cleanup function will be called every time before the effect runs, including the first time when the component is mounted. This can be useful if you need to perform some cleanup actions before the effect re-runs.
