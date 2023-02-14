@@ -2,7 +2,6 @@ import { RESTAURANTCARD_IMG_CDN } from "../config";
 
 const Menu = ({ menu }) => {
   const imagePresent = (imageId) => {
-    console.log("image present>>>"+imageId)
     if (imageId == undefined) {
       return 0;
     } else if ((imageId.length == 0)) {
@@ -21,9 +20,6 @@ const Menu = ({ menu }) => {
         <p>{menu?.description}</p>
       </div>
       <div className="menu-img">
-        {console.log(menu)}
-        {console.log(menu?.name)}
-        {console.log(imagePresent(menu?.cloudinaryImageId))}
         {imagePresent(menu?.cloudinaryImageId) ? (
           <img
             src={RESTAURANTCARD_IMG_CDN + menu?.cloudinaryImageId}

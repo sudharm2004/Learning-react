@@ -629,3 +629,91 @@ To fix this issue, you can add a cleanup function to the useEffect hook that sto
 
 13)When will clean up function of useEffect will be called if i have state/props in its dependency array?
 Yes, you can add a cleanup function to an useEffect hook that has dependencies. In this case, the cleanup function will be called every time before the effect runs, including the first time when the component is mounted. This can be useful if you need to perform some cleanup actions before the effect re-runs.
+
+Day 9 >>>>>>
+1)Custom Hooks
+
+2)Chunking,Code splitting,Dynamic bundling,Lazy loading,onDemand loading
+let's say u have large web application for shopping like makeMyTrip so there will be various sections on your web page and various sections will have multiple components So when u bundle them all the file of bundled js file will very large and hence it will make our app slow hence we use Chunking/Lazy loading/onDemand loading.
+Now this is how it works,now suppouse website makeMyTrip has three sections homepage,flights,trains,packages,etc.
+Now user may come only to visit flights and book them and may not even goes trains section...Now if we bundle all of them together we are bundling and loading the code that is not even needed.......hence what we do is lazyload/dynamically import it which means our intial bundled index.js file does not include code for flights,trains,packages,etc. it only includes bundled code for homepage and when user goes to other sections the code for other sections is dynamically bundled and loaded into the browser.
+
+Now in our food app we are lazy loading our instamart so in our network tab you can check that when u go to instamart section the new instamart.js file is loaded.  
+
+Syntax:-
+//Above function component
+const Instamart=lazy(()=>import("./components/Instamart"))
+//In createBrowserRouter configuration
+{
+  path:'/instamart',
+  element:<Instamart/>
+}
+
+But⚠️ this code will display an error 😒 because since we are loading the instamart component after we click on the link now it takes time to load the component let's say 30ms but react tries to render instamart before it was loaded and hence it shows error (in the food app we are using useRouteError it will show error component).
+But🧐 if you navigate to another component and comeback to this component it will show you the Instamart component 🤯
+Now what happens when you load the component through lazy() React suspends the rendering and renders the component when it is loaded so when you navigate first it shows error.
+
+Now to resolve this we need to use <Suspense/> component exported by react to tell react it is loaded through dynamically and hence react internally will handle the error and show u the component.
+<Suspense/> component take a prop called fallback which is takes component and show this component until your component is loaded(Instamart in this case).We can use it for shimmer effect
+//Above function component
+const Instamart=lazy(()=>import("./components/Instamart"))
+//In createBrowserRouter configuration
+{
+  path:'/instamart',
+  element:<Suspense fallback={<Shimmer/>}><Instamart/></Suspense>
+}
+
+3)<Suspense/> 
+Suspense is a feature in React that allows for the declarative fetching of data as a component is being rendered. This feature enables developers to show a loading spinner or placeholder content while the data is being fetched, improving the user experience. With Suspense, data fetching can be integrated directly into the component tree, reducing the need for complex data fetching logic and making it easier to manage and reason about the data in your app.
+
+4)Chunking,Code splitting,Dynamic bundling,Lazy loading,onDemand loading
+Chunking: It is a technique to split the large code into smaller chunks to make the initial loading faster and more manageable. This can be especially helpful when dealing with large codebases or slow internet connections.
+
+Code splitting: It refers to splitting a large codebase into smaller, more manageable parts, or “chunks”. This allows the browser to only load the necessary code for a specific page or component, improving the performance and loading time of the website.
+
+Dynamic bundling: This refers to the process of generating and serving JavaScript bundles on the fly in response to specific user requests. This can be used to improve performance by only loading the code that the user needs at a given time.
+
+Lazy loading: This refers to the process of deferring the loading of resources until they are actually needed. This can be useful for optimizing performance, as the browser will only load the necessary resources, rather than all resources at once.
+
+On-demand loading: This is a technique where resources are only loaded when they are needed, rather than all at once. This can help improve the performance of a website or application, as it reduces the amount of data that needs to be loaded and processed at once.
+
+5)Advantages of Code Splitting:
+
+Reduced initial load time: By splitting the code into smaller chunks, only the necessary code is loaded initially, reducing the size of the initial payload and improving the initial loading time.
+
+Improved User Experience: By loading only the required code, the user is able to interact with the application faster, leading to a better overall user experience.
+
+Better Resource Management: By loading only the required code, the browser has to process less JavaScript, freeing up memory and improving the overall performance of the application.
+
+Optimization of SEO: By loading only the required code, the initial HTML content can be rendered faster, which is crucial for SEO optimization.
+
+Disadvantages of Code Splitting:
+
+Increased complexity: Code splitting requires a deeper understanding of the application structure and more effort in terms of implementation. This can lead to increased complexity and development time.
+
+Performance Overhead: The process of loading different chunks of code can cause additional overhead and negatively affect the overall performance of the application.
+
+Increased Maintenance Effort: Managing multiple code chunks can increase the maintenance effort and lead to additional debugging and testing.
+
+Browser Compatibility: Some older browsers may not support the dynamic import() function used for code splitting, leading to compatibility issues.
+
+6)Execution flow of custom hook
+When the custom hook updates its internal state using the useState hook, it triggers a render update in the React DOM. This render update causes the component that uses the custom hook to be re-rendered with the updated state.
+
+The execution flow of a custom hook and a component using it is as follows:
+
+The custom hook is executed when the component that uses it is mounted. The custom hook can use other React hooks like useState or useEffect to manage its internal state.
+
+The custom hook returns a value that represents its state. This value is stored in a variable in the component that uses the custom hook.
+
+The component uses the value returned from the custom hook to render its UI.
+
+If the custom hook updates its internal state using setState, the component re-renders with the updated state.
+
+The cycle continues as the custom hook and the component continue to interact and update each other.
+
+In summary, the custom hook and the component using it interact with each other and the changes made by one affect the other. This interaction is facilitated by React's mechanism of re-rendering the components when their state or props change.
+
+7)so now what if i have eventlistener on a button and when button is clicked the state is updated so now will component and custom hook are re-rendered?
+
+Yes, if you have an event listener on a button that updates the state, the component and the custom hook will both be re-rendered. When the state is updated, React will trigger a re-render of the component that uses that state. If the state is being updated within a custom hook, then the hook will also be re-executed and its return value will be updated. This updated value will be used by the component, which will trigger another re-render. In this way, the component and the hook are both updated whenever the state is changed, and a re-render will occur.
