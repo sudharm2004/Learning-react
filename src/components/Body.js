@@ -4,28 +4,24 @@ import Shimmer from "./Shimmer";
 import useOnline from "../utils/useOnline";
 import { filterCards } from "../utils/helper";
 import useInput from "../utils/useInput";
+// import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
   const isonline = useOnline();
 
-  const searchTxt=useInput('Search-Btn');
+  const searchTxt = useInput("Search-Btn");
 
-  // const [searchTxt, setsearchTxt] = useState("Enter the dish name");
-  const [allCards, setallCards] = useState();
+  // const [allcards,filteredCards,filterCards]=useRestaurantList();
+
   const [filteredCards, setfilteredCards] = useState();
-
-  // const filterCards = (cards,value) => {
-  //   const filteredData = filteredCards.filter((element) => {
-  //     return element.data.name.toLowerCase()?.includes(searchTxt.toLowerCase());
-  //   });
-  //   setfilteredCards(filteredData);
-  // };
-
+  const [allCards, setallCards] = useState();
   async function getCardData() {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6248966&lng=73.8566087&page_type=DESKTOP_WEB_LISTING"
     );
     const result = await data.json();
+    console.log("GetCardData");
+    console.log(result);
     setfilteredCards(result?.data?.cards[2].data?.data?.cards);
     setallCards(result?.data?.cards[2].data?.data?.cards);
   }
@@ -39,25 +35,17 @@ const Body = () => {
   }
   return (
     <div className="Body">
-      <div className="Search-container">
-        {/* <input
-          type="text"
-          value={searchTxt}
-          className="Search-Btn"
-          onChange={(e) => {
-            console.log(e.target.value)
-            setsearchTxt(e.target.value);
-          }}
-        /> */}
+      <div className="my-4">
         <input
           type="text"
-          className="Search-Btn"
+          className="mx-3 rounded border-2 border-black p-1"
           id="Search-Btn"
           placeholder="Enter the Restaurant"
           value={searchTxt}
         />
         <button
-        id="filterCardsButton"
+          className="rounded-md bg-black p-1 text-white"
+          id="filterCardsButton"
           onClick={() => {
             setfilteredCards(filterCards(filteredCards, searchTxt));
           }}
@@ -67,6 +55,13 @@ const Body = () => {
         >
           Search Restaurant
         </button>
+        {/* <button
+        id="filterCardsButton"
+          onClick={()=>{filterCards(searchTxt)}}
+          onBlur={filterCards}
+        >
+          Search Restaurant
+        </button> */}
       </div>
 
       {filteredCards === undefined ? (

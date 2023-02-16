@@ -4,20 +4,30 @@ import logo from "../assets/img/logo.jpeg";
 
 const Header = () => {
   return (
-    <header className="nav">
-      <img src={logo} alt="Logo" className="nav-logo" />
-      <ul className="nav-items">
+    <header className=" flex items-center justify-between bg-slate-900 text-white">
+      <img src={logo} alt="Logo" className="w-52" />
+      <ul className="flex space-x-3 p-5">
         <Link to="/">
-          <li>Home</li>
+          <li className="rounded-md border-2 border-white p-1 hover:bg-white hover:text-black">
+            Home
+          </li>
         </Link>
         <Link to="/about">
-          <li>About us</li>
+          <li className="rounded-md border-2 border-white p-1 hover:bg-white hover:text-black">
+            About us
+          </li>
         </Link>
         <Link to="/instamart">
-          <li>instamart</li>
+          <li className="rounded-md border-2 border-white p-1 hover:bg-white hover:text-black">
+            Instamart
+          </li>
         </Link>
-        <li>Contact us</li>
-        <li>Cart</li>
+        <li className="rounded-md border-2 border-white p-1 hover:bg-white hover:text-black">
+          Contact us
+        </li>
+        <li className="rounded-md border-2 border-white p-1 hover:bg-white hover:text-black">
+          Cart
+        </li>
       </ul>
     </header>
   );

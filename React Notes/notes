@@ -425,8 +425,10 @@ An SPA (Single-page application) is a web app implementation that loads only a s
 A single-page application (SPA) is a web application or website that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server. In an SPA, a single HTML page is dynamically updated as the user interacts with the application, giving the feeling of a smooth and fast user experience.
 
 8)Two types of routing
-server side routing
-client side routing
+Server-side routing refers to the process of handling requests for specific URLs on the server and returning the appropriate content in response. This is the traditional approach to handling routing, where the web server receives a request for a specific URL, looks up the appropriate page or resource, and returns the HTML content to the client. This approach can be useful for websites that have a lot of dynamic content or require a lot of server-side processing.
+
+Client-side routing, on the other hand, refers to the process of handling routing on the client-side using JavaScript. In this approach, the web server returns a single HTML page that contains all the necessary JavaScript and CSS files. When the user clicks a link or enters a URL, the JavaScript code on the page intercepts the request and dynamically updates the content of the page without reloading the entire page. This approach is often used in Single Page Applications (SPAs) and can result in faster page loads and better user experience.
+
 
 9)Link component
 Link component is used to link to routes.It does not reload the whole pages.
@@ -600,6 +602,8 @@ The return value of useEffect is used to clean up any ongoing work before the ef
 
 If you use async in the useEffect or its cleanup function, it could cause unpredictable behavior, as React will not have full control over the timing and sequence of the cleanup and effect functions. In such cases, the cleanup function might not be executed in a timely manner or might not be executed at all, leading to unexpected behavior or memory leaks.
 
+Suppose you have async of useffect callback function which is used to fetch data from api and it returns cleanup function to abort the api call if user navigates to another component and unmounts the current component as expected when a user navigates to another component while still fetching is going on api call should be aborted but since the callback function is async cleanup function will not be called instantly when component unmounts thus leading unexpected behaviour.
+
 In conclusion, componentDidMount and useEffect are two different tools for performing side effects in React. componentDidMount is a one-time setup method for class components, while useEffect is a hook that allows you to synchronize a component with an external system and run an effect after every render. It's important to understand the difference between these two tools and how to use them properly to ensure that your components behave as expected.
 
 II)Why do we have to write counstructor and super(props) in class based component
@@ -632,6 +636,7 @@ Yes, you can add a cleanup function to an useEffect hook that has dependencies. 
 
 Day 9 >>>>>>
 1)Custom Hooks
+In React, a custom hook is a reusable function that encapsulates some specific logic and can be shared across multiple components. Custom hooks allow you to abstract away complex logic and state management from your components, making them more focused and easier to reason about.
 
 2)Chunking,Code splitting,Dynamic bundling,Lazy loading,onDemand loading
 let's say u have large web application for shopping like makeMyTrip so there will be various sections on your web page and various sections will have multiple components So when u bundle them all the file of bundled js file will very large and hence it will make our app slow hence we use Chunking/Lazy loading/onDemand loading.
@@ -717,3 +722,96 @@ In summary, the custom hook and the component using it interact with each other 
 7)so now what if i have eventlistener on a button and when button is clicked the state is updated so now will component and custom hook are re-rendered?
 
 Yes, if you have an event listener on a button that updates the state, the component and the custom hook will both be re-rendered. When the state is updated, React will trigger a re-render of the component that uses that state. If the state is being updated within a custom hook, then the hook will also be re-executed and its return value will be updated. This updated value will be used by the component, which will trigger another re-render. In this way, the component and the hook are both updated whenever the state is changed, and a re-render will occur.
+
+8)each instance of the custom hook has its own private state that is managed by React, and React knows which state belongs to which component instance by keeping track of the component identity internally.
+
+Day 10 >>>>>>
+
+you should know about pros and cons of native css,scss ,styled components and css frameworks.
+
+🔴SCSS (Sass) is a preprocessor for CSS that extends the functionality of CSS, making it easier and more efficient to write and maintain stylesheets. Here are some reasons why you might want to use SCSS in your projects:
+
+Variables: SCSS allows you to use variables to store and reuse values such as colors, fonts, and sizes. This makes it easier to maintain and modify your stylesheets.
+
+Nesting: SCSS allows you to nest selectors within each other, making it easier to organize your styles and avoid repetition.
+
+Mixins: SCSS allows you to create reusable blocks of styles called mixins, which can be included in multiple selectors. This makes it easier to maintain consistency and avoid repetition.
+
+Functions: SCSS allows you to write and use functions to perform calculations, create color schemes, and manipulate values.
+
+Modularization: SCSS allows you to break up your stylesheets into smaller, more manageable files, which can be compiled into a single CSS file for production.
+
+Improved readability: SCSS's syntax is similar to other programming languages, making it easier to read and understand for developers who are familiar with other programming languages.
+
+🔴Styled Components is a popular library for styling React components. Here are some of the pros and cons of using this library:
+
+Pros:
+
+Scoped styles: Styled Components creates styles that are scoped to the component they are defined in, which reduces the risk of style conflicts in your application.
+
+Code organization: Styles are defined in the same file as the component, which makes it easier to read and understand the code. This can also make it easier to maintain and update the code.
+
+Dynamic styling: Styled Components allows you to use dynamic values such as props and theme variables to generate styles at runtime.
+
+Server-side rendering: Styled Components can be used for server-side rendering, which can improve the performance and user experience of your application.
+
+Flexibility: Styled Components can be used with any React-based library or framework, making it a versatile choice for styling React applications.
+
+Cons:
+
+Learning curve: There may be a learning curve when using Styled Components for the first time, especially if you are new to CSS-in-JS.
+
+Performance: Styled Components may have a performance impact on your application, especially if you use complex or deeply nested styles.
+
+Tooling: The tooling for Styled Components may be less mature than other CSS-in-JS solutions, which may limit your ability to use certain features or integrations.
+
+Additional build step: Styled Components requires an additional build step to generate the styles, which may add complexity to your build process.
+
+🔴CSS frameworks are pre-written, ready-to-use sets of CSS code that can be used to build web applications. Here are some of the pros and cons of using CSS frameworks:
+
+Pros:
+
+Faster development: CSS frameworks can speed up development by providing pre-written CSS code and components that can be used to build web applications quickly.
+
+Consistency: CSS frameworks can help ensure consistency in design and style across an application. This can help make the application more visually appealing and easier to use.
+
+Responsiveness: Many CSS frameworks are designed to be responsive, meaning that they automatically adjust to different screen sizes and devices.
+
+Cross-browser compatibility: CSS frameworks are typically tested across multiple browsers, which can help ensure that your application looks and works the same in different browsers.
+
+Community support: Many CSS frameworks have active communities of users and contributors, which can provide support and resources for developers.
+
+Cons:
+
+Learning curve: Using a CSS framework often requires learning a new set of tools and conventions, which can take time and effort.
+
+Limitations: CSS frameworks can be limiting in terms of design and customization. Some developers may find it challenging to modify the pre-existing styles and components to fit their needs.
+
+Overhead: CSS frameworks often have large codebases, which can increase the size of your application and slow down its performance.
+
+Unnecessary features: CSS frameworks often include features that may not be needed in your application, which can lead to unnecessary code and overhead.
+
+Debugging: Debugging can be more challenging when using a CSS framework, as the pre-written code can be difficult to understand and modify.
+
+1)What is content,theme and plugins in configuration file(tailwind.config.js)
+Content:
+The content section of your tailwind.config.js file is where you configure the paths to all of your HTML templates, JavaScript components, and any other source files that contain Tailwind class names.
+
+theme:
+The theme property is where you can customize and extend the default styles provided by Tailwind. The extend property within theme is where you can add your own custom CSS classes, as well as modify existing classes. For example, you can use the extend property to add new color palettes, font families, or spacing scales to your Tailwind configuration. You can also use it to override any of the default styles provided by Tailwind.
+
+plugins:
+The plugins property is where you can add any third-party plugins that extend the functionality of Tailwind. These plugins can provide additional CSS classes or modify existing ones. For example, there are Tailwind plugins available that provide utility classes for working with grids, aspect ratios, and much more.
+
+2)When you need to give exact width/height/dimensions you use square brackets.
+for eg:-w-[20px] this gives width of 20 pixels
+
+3)pros of tailwind
+-standardised css
+-easy debugging at go(in the same file)
+-time saving
+-NO repetion of class with same style
+
+4)cons of tailwind
+-It has learning curve
+-It makes code looks little bit ugly

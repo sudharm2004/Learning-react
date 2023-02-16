@@ -1,15 +1,8 @@
 import { RESTAURANTCARD_IMG_CDN } from "../config";
+import { imagePresent } from "../utils/helper";
 
 const Menu = ({ menu }) => {
-  const imagePresent = (imageId) => {
-    if (imageId == undefined) {
-      return 0;
-    } else if ((imageId.length == 0)) {
-      return 0;
-    } else {
-      return 1;
-    }
-  };
+  
 
   return (
     <div className="MenuDetails" key={menu?.id}>

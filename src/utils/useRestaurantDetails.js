@@ -1,3 +1,5 @@
+//This hook is used to fetch data of a dish from api 
+
 import {useEffect,useState} from 'react'
 
 console.log('useRestaurant')

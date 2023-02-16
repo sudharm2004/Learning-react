@@ -1,21 +1,19 @@
 const Shimmer = () => {
   return (
-    <div className="shimmer-restaurantlist">
-        {
-            Array(20).fill("").map((e,index)=>{
-                return <div className="shimmer-restaurantcard" key={index}>
-        <div className="shimmer-restaurantcard-img"></div>
-        <div className="shimmer-restaurantcard-bold-text"></div>
-        <div className="shimmer-restaurantcard-light-text"></div>
-        <div className="shimmer-restaurantcard-light-text"></div>
-        <div
-          className="shimmer-restaurantcard-light-text"
-          style={{ width: "50%" }}
-        ></div>
-      </div>
-            })
-        }
-      
+    <div className="m-3 flex flex-wrap justify-between">
+      {Array(20)
+        .fill("")
+        .map((e, index) => {
+          return (
+            <div className="m-2 w-52 space-y-1 rounded-md p-3" key={index}>
+              <div className="h-40 w-full bg-gray-500"></div>
+              <div className="h-3 w-full rounded-2xl bg-gray-500"></div>
+              <div className="h-1 w-full rounded-2xl bg-gray-500"></div>
+              <div className="h-1 w-full rounded-2xl bg-gray-500"></div>
+              <div className="h-1 w-1/2 rounded-2xl bg-gray-500"></div>
+            </div>
+          );
+        })}
     </div>
   );
 };

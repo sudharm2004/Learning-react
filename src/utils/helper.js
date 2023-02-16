@@ -6,3 +6,13 @@ export const filterCards = (cards,value) => {
     });
     return filteredData;
   };
+
+export const imagePresent = (imageId) => {
+  if (imageId == undefined) {
+    return 0;
+  } else if ((imageId.length == 0)) {
+    return 0;
+  } else {
+    return 1;
+  }
+};

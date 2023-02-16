@@ -10,7 +10,6 @@ import RestaurantDetails from './components/RestaurantDetails'
 import Profile from './components/Profile'
 import Shimmer from './components/Shimmer';
 
-const MyComponent = lazy(() => import('./MyComponent'))
 const Instamart=lazy(()=>import('./components/Instamart'))
 // import ProfileClass from './components/ProfileClass'
 // import AboutClass from './components/AboutClass';

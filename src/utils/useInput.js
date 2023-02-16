@@ -2,24 +2,24 @@ import { useEffect, useState } from "react";
 
 const useInput = (inputId) => {
 
-  const [searchTxt, setsearchTxt] = useState("");
+  const [value, setvalue] = useState("");
   const updateSearchBtn = (event) => {
-    setsearchTxt(event.target.value);
+    setvalue(event.target.value);
   };
   useEffect(() => {
     const inputBtn = document.getElementById(inputId);
-    if(inputBtn)
-    {
 
-        inputBtn.addEventListener("change", updateSearchBtn);
+
+        inputBtn.addEventListener("input", updateSearchBtn);
         
         return () => {
-            inputBtn.removeEventListener("change", updateSearchBtn);
+            inputBtn.removeEventListener("input", updateSearchBtn);
         };
-    }
-  }, [inputId]);
+    
+  }, []);
 
-  return searchTxt;
+  return value;
+  // return [value,updateSearchBtn]
 };
 
 export default useInput;
