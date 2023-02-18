@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useInput = (inputId) => {
-
+  console.log("hel");
   const [value, setvalue] = useState("");
   const updateSearchBtn = (event) => {
     setvalue(event.target.value);
@@ -9,13 +9,11 @@ const useInput = (inputId) => {
   useEffect(() => {
     const inputBtn = document.getElementById(inputId);
 
+    inputBtn.addEventListener("input", updateSearchBtn);
 
-        inputBtn.addEventListener("input", updateSearchBtn);
-        
-        return () => {
-            inputBtn.removeEventListener("input", updateSearchBtn);
-        };
-    
+    return () => {
+      inputBtn.removeEventListener("input", updateSearchBtn);
+    };
   }, []);
 
   return value;

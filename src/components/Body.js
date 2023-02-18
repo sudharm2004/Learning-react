@@ -1,12 +1,14 @@
 import Restaurantlist from "./Restaurantlist";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import useOnline from "../utils/useOnline";
 import { filterCards } from "../utils/helper";
+import UserContext from "../utils/Usercontext";
 import useInput from "../utils/useInput";
 // import useRestaurantList from "../utils/useRestaurantList";
 
 const Body = () => {
+  const { user, setUser } = useContext(UserContext);
   const isonline = useOnline();
 
   const searchTxt = useInput("Search-Btn");
@@ -55,6 +57,18 @@ const Body = () => {
         >
           Search Restaurant
         </button>
+
+        <input
+          type="text"
+          className="mx-3 rounded border-2 border-black p-1"
+          id="Search-Btn"
+          placeholder="Enter the Restaurant"
+          value={user.name}
+          onChange={(e) => {
+            setUser({ ...user, name: e.target.value });
+          }}
+        />
+
         {/* <button
         id="filterCardsButton"
           onClick={()=>{filterCards(searchTxt)}}

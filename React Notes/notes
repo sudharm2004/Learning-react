@@ -28,7 +28,7 @@ In this when page is loaded the html rendering start and when a script file is e
 Script tag with async attribute:-
 In this when page is loaded the html rendering starts and when a script file is encountered the the file is fetched asynchronusly while rendering is going on and once the file is fetched rendering stops and file is executed and after that rendering starts again.
 Script tag with defer attribute:-
-In this when page is loaded the html rendering starts and all script files  encountered are fetched asynchronusly while rendering is going on and once the rendering is done  all fetched files are executed one by one.
+In this when page is loaded the html rendering starts and all script files encountered are fetched asynchronusly while rendering is going on and once the rendering is done all fetched files are executed one by one.
 https://www.youtube.com/watch?v=IrHmpdORLu8
 
 Emmet:
@@ -58,9 +58,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin
 Development VS Production build:
 
 https://react-cn.github.io/react/downloads.html
-
-
-
 
 Day 2 >>>>>
 
@@ -117,33 +114,33 @@ dist is a faster development build of our project which is hosted on server(loca
 It is minified version of our huge project like we used npm build in webpack(harry tutorials).
 
 13.Parcel advantages:-
-1) bundling our code
-2)minifying the code
-3)removing all the console log(cleaning the code)
-4)it does image optimization(compress them)
-5)it provides caching while development->The time required to build development build first is largest and subsequently the time required decreases
-6)It compresses your files(decreases the size of your js,html,css files). for eg:-it changes names of your variables (with large names )in js to some small names like alphabets/something.
-7)It also handles compatability with older versions.
-8)It enables https on development build.
-9)It manages your port number.
-10)It uses consistent hashing algorithm.
-11)It has zero configuration.
 
-14.We should put parcel.cache in gitignore because anything that can be auto generated will be put in gitignore.
+1. bundling our code
+   2)minifying the code
+   3)removing all the console log(cleaning the code)
+   4)it does image optimization(compress them)
+   5)it provides caching while development->The time required to build development build first is largest and subsequently the time required decreases
+   6)It compresses your files(decreases the size of your js,html,css files). for eg:-it changes names of your variables (with large names )in js to some small names like alphabets/something.
+   7)It also handles compatability with older versions.
+   8)It enables https on development build.
+   9)It manages your port number.
+   10)It uses consistent hashing algorithm.
+   11)It has zero configuration.
 
-15.Transitive dependencies:-
-A transitive dependency is a library or module that is depended on by another library or module, even though the main application code does not directly depend on it. 
-For example, suppose that a React application depends on library A, which in turn depends on library B. In this case, library B is a transitive dependency of the React application, because the application code does not directly depend on it, but it is required for library A to work correctly.
+   14.We should put parcel.cache in gitignore because anything that can be auto generated will be put in gitignore.
 
-16.BrowserList:-It is a package used to make your web app compatible for older versions of browser.
-It is automatically added by parcel when we are using it.
-Browserslist is a tool that allows specifying which browsers should be supported in your frontend app by specifying "queries" in a config file. It's used by frameworks/libraries such as React, Angular and Vue, but it's not limited to them.
-Reference:-https://browsersl.ist/
+   15.Transitive dependencies:-
+   A transitive dependency is a library or module that is depended on by another library or module, even though the main application code does not directly depend on it.
+   For example, suppose that a React application depends on library A, which in turn depends on library B. In this case, library B is a transitive dependency of the React application, because the application code does not directly depend on it, but it is required for library A to work correctly.
 
-17.package.json scripts:-
-scripts are terminal commands that perform a set of actions. 
-To execute your Script, use the ‘npm run <NAME-OF-YOUR-SCRIPT>’ 
+   16.BrowserList:-It is a package used to make your web app compatible for older versions of browser.
+   It is automatically added by parcel when we are using it.
+   Browserslist is a tool that allows specifying which browsers should be supported in your frontend app by specifying "queries" in a config file. It's used by frameworks/libraries such as React, Angular and Vue, but it's not limited to them.
+   Reference:-https://browsersl.ist/
 
+   17.package.json scripts:-
+   scripts are terminal commands that perform a set of actions.
+   To execute your Script, use the ‘npm run <NAME-OF-YOUR-SCRIPT>’
 
 What we done today:-
 We installed parcel (a bundler) as a dev dependency in our project first.
@@ -156,7 +153,7 @@ Day 3 >>>>>>
 2)What are plugins
 
 3)what is .babelrc?
-It is a configuration file for babel 
+It is a configuration file for babel
 
 4)React Key Concilation:-Key should be given to children elements of similar types.
 When elements are rendered in a list, React uses the key attribute to keep track of which elements are added, removed, or re-ordered. Without a key, React doesn't have a way to keep track of the elements in the list, so it has to re-render the entire list whenever a change is made.
@@ -197,22 +194,21 @@ BABEL=>JSX=>react.createElement=>OBJECT=>DOM
 
 REACT CODE:-
 const Header=()=>{
-    return (
-        <h1>hello world! through functional component</h1>
-    )
+return (
+
+<h1>hello world! through functional component</h1>
+)
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Header/>);
 
 CODE TRANSPILED BY BABEL:-
 const Header = () => {
-  return React.createElement("h1", null, "hello world! through functional component");
+return React.createElement("h1", null, "hello world! through functional component");
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(React.createElement(Header, null));
-
-
 
 When you use Parcel to build a React application, it automatically includes and configures Babel to transpile JSX code into JavaScript that can be understood by web browsers.
 
@@ -227,7 +223,7 @@ When you build your application with parcel, it will look for any JSX elements i
 In summary, when you use Parcel to build a React application, it automatically includes and configures Babel to transpile JSX code into JavaScript that can be understood by web browsers. You don't have to explicitly include Babel as a dependency or configure it, Parcel will handle it automatically for you. It will look for any JSX elements in your code, transpile them using Babel and bundle them with
 
 9)Component=>
-Component is a JavaScript class or function that represents a reusable piece of UI. 
+Component is a JavaScript class or function that represents a reusable piece of UI.
 Functional components: These are JavaScript functions that accept props as an argument and return a JSX element. They don't have their own state and lifecycle methods.
 Class components: These are JavaScript classes that extend the React.Component class. They have their own state and lifecycle methods. They also accept props as an argument and return a JSX element, but the way that it is done is different from functional components.
 Functional component
@@ -238,17 +234,18 @@ Name of a component starts with a capital letter.
 Component composition is a technique in React where you can build a complex component by combining smaller, simpler components. The smaller components are called "composable components" or "sub-components" and the complex component is called the "composite component."
 For eg:-
 function WelcomeDialog() {
-  return (
-    <div>
-      <h1>Welcome</h1>
-      <p>Thank you for visiting our site.</p>
-      <Button label="Close" onClick={() => console.log("closing dialog")} />
-    </div>
-  );
+return (
+
+<div>
+<h1>Welcome</h1>
+<p>Thank you for visiting our site.</p>
+<Button label="Close" onClick={() => console.log("closing dialog")} />
+</div>
+);
 }
 
 function Button({ label, onClick }) {
-  return <button onClick={onClick}>{label}</button>;
+return <button onClick={onClick}>{label}</button>;
 }
 
 In this example, the WelcomeDialog component is the composite component, and the Button component is the sub-component. The WelcomeDialog component renders the Button component inside its JSX.
@@ -263,6 +260,7 @@ Day 4 >>>>>>
 Any jsx expression must have single root parent.So you create a div with no classess/id and then add include all children elements into it.But this forces you to add unnecessary extra div in your code.
 for eg:-
 const header=()=>{
+
   <div>
     <Logo/>
     <NavItems/>
@@ -286,7 +284,6 @@ for eg:-
 let arr = [1, 2, 3, 4];
 let str = arr.join(', ');
 console.log(str); // Output: "1, 2, 3, 4"
-
 
 5)Config driven ui?
 In this UI changes according to the data provided which it means it is driven by configuration provided by backend.
@@ -343,8 +340,8 @@ setState is a function which is used to update the state.The setState function i
 Day 6 >>>>>>
 1)What are microservices?
 Microservices is an architectural style that structures an application as a collection of small, independent services that communicate with each other through APIs. Each microservice is focused on a specific business capability and can be developed, deployed, and scaled independently of the other services in the application. This approach enables faster development, easier maintenance, and greater scalability compared to a monolithic architecture where everything is tightly coupled and deployed as a single unit.
- 
-for eg:- 
+
+for eg:-
 There is different team and project for UI,BackEnd,Logs,Notification,etc.
 
 2)What is useeffect?
@@ -363,7 +360,7 @@ We useeffect(componentDidMount in class based component) for api call because fi
 Shimmer effects are loading indicators used when fetching data from a data source that can either be local or remote. It paints a view that may be similar to the actual data to be rendered on the screen when the data is available.
 
 4)What is conditional rendering?
-Conditional rendering in React refers to the practice of rendering different components or elements in the UI based on certain conditions. For example, you may want to display a specific component to a user based on whether they are logged in or not. 
+Conditional rendering in React refers to the practice of rendering different components or elements in the UI based on certain conditions. For example, you may want to display a specific component to a user based on whether they are logged in or not.
 
 5)In react javascript expressions can executed in curly braces but javascript statements cannot be executed why?
 In JavaScript, expressions are pieces of code that return a value. They can be as simple as a single value like 5, or as complex as a function call, like Math.max(5, 10).
@@ -387,14 +384,14 @@ Day 7 >>>>>>
 3)createBrowserRouter is the function that an array of objects as argument in which each object includes path and component related to it.Basically it is used to create router.
 for eg:-
 const appRouter=createBrowserRouter([
-  {
-    path:'/',
-    element:<Applayout/>
-  },
-  {
-    path:'/about',
-    element:<About/>
-  }
+{
+path:'/',
+element:<Applayout/>
+},
+{
+path:'/about',
+element:<About/>
+}
 ])
 
 4)RouterProvider
@@ -406,15 +403,15 @@ root.render(<RouterProvider router={appRouter}>)
 It is used to show the component that you want to display if invalid url/path is entered.
 for eg:-
 const appRouter=createBrowserRouter([
-  {
-    path:'/',
-    element:<Applayout/>
-    errorElement:<Error/>
-  },
-  {
-    path:'/about',
-    element:<About/>
-  }
+{
+path:'/',
+element:<Applayout/>
+errorElement:<Error/>
+},
+{
+path:'/about',
+element:<About/>
+}
 ])
 
 6)useRouteError
@@ -429,7 +426,6 @@ Server-side routing refers to the process of handling requests for specific URLs
 
 Client-side routing, on the other hand, refers to the process of handling routing on the client-side using JavaScript. In this approach, the web server returns a single HTML page that contains all the necessary JavaScript and CSS files. When the user clicks a link or enters a URL, the JavaScript code on the page intercepts the request and dynamically updates the content of the page without reloading the entire page. This approach is often used in Single Page Applications (SPAs) and can result in faster page loads and better user experience.
 
-
 9)Link component
 Link component is used to link to routes.It does not reload the whole pages.
 
@@ -441,32 +437,33 @@ Outlet:-
 
 foreg:-
 const Applayout=()=>{
-    return (
-        <>  
-        <Header/>
-        <Outlet/>
-        <Footer/>
-        </>
-    );
+return (
+<>
+
+ <Header/>
+<Outlet/>
+<Footer/>
+</>
+);
 }
 
 const appRouter=createBrowserRouter([
-    {
-        path:'/',
-        element:<Applayout/>,
-        errorElement:<Error/>,
-        children:[
-            {
-                path:'/',
-                element:<Body/>
-            },
-            {
-                path:'/about',
-                element:<About/>
-            }
-        ]
-    }
-   
+{
+path:'/',
+element:<Applayout/>,
+errorElement:<Error/>,
+children:[
+{
+path:'/',
+element:<Body/>
+},
+{
+path:'/about',
+element:<About/>
+}
+]
+}
+
 ])
 
 11)useParams
@@ -485,44 +482,45 @@ It logs a function in the console which shows that useState() is nothing but a j
 14)Nested Routing More deeply
 Suppose you want to show profile in about on path /about/profile you can do as following
 const Applayout=()=>{
-    return (
-        <>  
-        <Header/>
-        <Outlet/>
-        <Footer/>
-        </>
-    );
+return (
+<>
+
+ <Header/>
+<Outlet/>
+<Footer/>
+</>
+);
 }
 
 const appRouter=createBrowserRouter([
-    {
-        path:'/',
-        element:<Applayout/>,
-        errorElement:<Error/>,
-        children:[
-            {
-                path:'/',
-                element:<Body/>
-            },
-            {
-                path:'/about',
-                element:<About/>,
-                children:[
-                  {
-                    //do not do '/profile' cause server will assume path localhost:1234/profile and only profile means you want to
-                    //append it to existing path/route i,e, to  localhost:1234/about/profile
-                    path:'profile'
-                    element:<Profile/>
-                  }
-                ]
-            },
-            {
-                path:'/restaurant/:id',
-                element:<RestaurantDetails/>
-            }
-        ]
-    }
-   
+{
+path:'/',
+element:<Applayout/>,
+errorElement:<Error/>,
+children:[
+{
+path:'/',
+element:<Body/>
+},
+{
+path:'/about',
+element:<About/>,
+children:[
+{
+//do not do '/profile' cause server will assume path localhost:1234/profile and only profile means you want to
+//append it to existing path/route i,e, to localhost:1234/about/profile
+path:'profile'
+element:<Profile/>
+}
+]
+},
+{
+path:'/restaurant/:id',
+element:<RestaurantDetails/>
+}
+]
+}
+
 ])
 
 Day 8 >>>>>>
@@ -535,11 +533,11 @@ It is a method in class based component/class that is called first.
 every class based component has constructor which takes props as argument and state are declared and intialised in the constructor.
 constructor(props)
 {
-  super(props)
-  this.state={
-    state1=value,
-    state2=value
-  };
+super(props)
+this.state={
+state1=value,
+state2=value
+};
 }
 
 4)Props in class based components
@@ -549,28 +547,28 @@ To access props in class-based components, you can use the "this.props" object. 
 To use state in class-based components, you need to initialize the state in the constructor of the component.To update the state, you can use the setState method, which takes an object that represents the updated state. You should never modify the state directly using assignment (e.g. this.state.count = 1).
 for eg:-
 class MyComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
-    this.incrementCount = this.incrementCount.bind(this);
-  }
-  incrementCount() {
-    this.setState({
-      count: this.state.count + 1,
-    });
-  }
-  render() {
-    return (
-      <div>
-        <p>Count: {this.state.count}</p>
-        <button onClick={this.incrementCount}>Increment</button>
-      </div>
-    );
-  }
+constructor(props) {
+super(props);
+this.state = {
+count: 0,
+};
+this.incrementCount = this.incrementCount.bind(this);
 }
+incrementCount() {
+this.setState({
+count: this.state.count + 1,
+});
+}
+render() {
+return (
 
+<div>
+<p>Count: {this.state.count}</p>
+<button onClick={this.incrementCount}>Increment</button>
+</div>
+);
+}
+}
 
 6)Lifecycle in React
 In REACT class based components constructor is called first(in beginning) then render method is called
@@ -579,7 +577,7 @@ In REACT class based components constructor is called first(in beginning) then r
 componentDidMount is a lifecycle method in React class-based components. It is called after a component is initially rendered to the DOM.
 
 8)React lifecycle
-React Lifecycle is divided into two phases 
+React Lifecycle is divided into two phases
 I)Render Phase:-
 In this phase constructor and render method is called
 II)Commit Phase:-
@@ -615,7 +613,6 @@ super(props) is used to call the constructor of the parent class. In React, the 
 
 It's important to note that the constructor and super(props) are not necessary in every class-based component. In many cases, you can use state initializations and component lifecycle methods without using the constructor and super(props). However, if you need to do more complex setup when the component is created, then the constructor and super(props) are important to include
 
-
 10)What happens if we are making an api call in componentDidMount of a child component?
 In this case first parent's constructor and render method is runned then child's constructor and render method is runned now componentDidMount has an api call and we declared it as async(async componentDidMount) so it will take some time to load and hence parent's componentDidMount method is runned and then componentDidMount of child is runned.
 
@@ -629,7 +626,7 @@ In this case, since you have a setInterval function running in a useEffect hook,
 
 When you navigate back to the component, a new interval is created and starts counting from 1 second, so the time displayed in the component will be the sum of the time elapsed in all the previous intervals plus the time elapsed in the current interval.
 
-To fix this issue, you can add a cleanup function to the useEffect hook that stops the previous interval when the component is unmounted. You can do this by returning a function from the useEffect hook that calls clearInterval with the ID of the interval. 
+To fix this issue, you can add a cleanup function to the useEffect hook that stops the previous interval when the component is unmounted. You can do this by returning a function from the useEffect hook that calls clearInterval with the ID of the interval.
 
 13)When will clean up function of useEffect will be called if i have state/props in its dependency array?
 Yes, you can add a cleanup function to an useEffect hook that has dependencies. In this case, the cleanup function will be called every time before the effect runs, including the first time when the component is mounted. This can be useful if you need to perform some cleanup actions before the effect re-runs.
@@ -643,15 +640,15 @@ let's say u have large web application for shopping like makeMyTrip so there wil
 Now this is how it works,now suppouse website makeMyTrip has three sections homepage,flights,trains,packages,etc.
 Now user may come only to visit flights and book them and may not even goes trains section...Now if we bundle all of them together we are bundling and loading the code that is not even needed.......hence what we do is lazyload/dynamically import it which means our intial bundled index.js file does not include code for flights,trains,packages,etc. it only includes bundled code for homepage and when user goes to other sections the code for other sections is dynamically bundled and loaded into the browser.
 
-Now in our food app we are lazy loading our instamart so in our network tab you can check that when u go to instamart section the new instamart.js file is loaded.  
+Now in our food app we are lazy loading our instamart so in our network tab you can check that when u go to instamart section the new instamart.js file is loaded.
 
 Syntax:-
 //Above function component
 const Instamart=lazy(()=>import("./components/Instamart"))
 //In createBrowserRouter configuration
 {
-  path:'/instamart',
-  element:<Instamart/>
+path:'/instamart',
+element:<Instamart/>
 }
 
 But⚠️ this code will display an error 😒 because since we are loading the instamart component after we click on the link now it takes time to load the component let's say 30ms but react tries to render instamart before it was loaded and hence it shows error (in the food app we are using useRouteError it will show error component).
@@ -664,11 +661,11 @@ Now to resolve this we need to use <Suspense/> component exported by react to te
 const Instamart=lazy(()=>import("./components/Instamart"))
 //In createBrowserRouter configuration
 {
-  path:'/instamart',
-  element:<Suspense fallback={<Shimmer/>}><Instamart/></Suspense>
+path:'/instamart',
+element:<Suspense fallback={<Shimmer/>}><Instamart/></Suspense>
 }
 
-3)<Suspense/> 
+3)<Suspense/>
 Suspense is a feature in React that allows for the declarative fetching of data as a component is being rendered. This feature enables developers to show a loading spinner or placeholder content while the data is being fetched, improving the user experience. With Suspense, data fetching can be integrated directly into the component tree, reducing the need for complex data fetching logic and making it easier to manage and reason about the data in your app.
 
 4)Chunking,Code splitting,Dynamic bundling,Lazy loading,onDemand loading
@@ -815,3 +812,17 @@ for eg:-w-[20px] this gives width of 20 pixels
 4)cons of tailwind
 -It has learning curve
 -It makes code looks little bit ugly
+
+Day 11 >>>>>>
+1)Props Drilling
+Props drilling is a term used in React to describe the process of passing data through multiple components in order to get to a child component that needs the data. This happens when you have a deeply nested component that needs data from its parent component, but the data is not available to it directly.
+
+To solve this problem, you have to pass the data down as props through all the intermediary components until it reaches the child component that needs it. This process is called props drilling.
+
+🔴Cons of props drilling:-
+1)Tracking the data:-When there is error and we debug teh code we have to track down from where the data is coming from
+2)Rendering of unwanted components:-When a props is update in a component all components used to passed props are re-rendered now there may be component that are not using the props they just help for props drilling and hence they are also re-rendered which is not even required.
+
+2)context.displayname is used to provide name to context so that it can be used to track in dev tools
+
+Day 12>>>>>
