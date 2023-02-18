@@ -6,17 +6,16 @@ const useRestaurantList = () => {
 
   const filterCards = (value) => {
     //This function is called two times:-
-    // 1)When button is clicked to filtercards for particular input hotel....at that time we pass input searchTxt value/value of hotel to be filtered and searched 
+    // 1)When button is clicked to filtercards for particular input hotel....at that time we pass input searchTxt value/value of hotel to be filtered and searched
     //2)When we click on something else....That is we will call this function that time with no arguments in order to update filteredcards to allcards.
     if (value == undefined) {
       setfilteredCards(allCards);
-    }
-    else{
-        console.log(value)
-        const filteredData = filteredCards.filter((element) => {
-            return element.data.name.toLowerCase()?.includes(value.toLowerCase());
-        });
-        setfilteredCards(filteredData);
+    } else {
+      console.log("fitercards" + value);
+      const filteredData = filteredCards.filter((element) => {
+        return element.data.name.toLowerCase()?.includes(value.toLowerCase());
+      });
+      setfilteredCards(filteredData);
     }
   };
 
