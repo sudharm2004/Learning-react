@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 const useRestaurantList = () => {
   const [filteredCards, setfilteredCards] = useState();
   const [allCards, setallCards] = useState();
-
   const filterCards = (value) => {
     //This function is called two times:-
     // 1)When button is clicked to filtercards for particular input hotel....at that time we pass input searchTxt value/value of hotel to be filtered and searched
@@ -11,11 +10,13 @@ const useRestaurantList = () => {
     if (value == undefined) {
       setfilteredCards(allCards);
     } else {
-      console.log("fitercards" + value);
       const filteredData = filteredCards.filter((element) => {
         return element.data.name.toLowerCase()?.includes(value.toLowerCase());
       });
-      setfilteredCards(filteredData);
+      // setfilteredCards(filteredData);
+      setfilteredCards((prevState) => {
+        return filteredData;
+      });
     }
   };
 

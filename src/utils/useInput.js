@@ -6,18 +6,18 @@ const useInput = (inputId) => {
   const updateSearchBtn = (event) => {
     setvalue(event.target.value);
   };
-  useEffect(() => {
-    const inputBtn = document.getElementById(inputId);
+  // useEffect(() => {
+  //   const inputBtn = document.getElementById(inputId);
 
-    inputBtn.addEventListener("input", updateSearchBtn);
+  //   inputBtn.addEventListener("input", updateSearchBtn);
 
-    return () => {
-      inputBtn.removeEventListener("input", updateSearchBtn);
-    };
-  }, []);
+  //   return () => {
+  //     inputBtn.removeEventListener("input", updateSearchBtn);
+  //   };
+  // }, []);
 
-  return value;
-  // return [value,updateSearchBtn]
+  // return value;
+  return [value, updateSearchBtn];
 };
 
 export default useInput;

@@ -826,3 +826,175 @@ To solve this problem, you have to pass the data down as props through all the i
 2)context.displayname is used to provide name to context so that it can be used to track in dev tools
 
 Day 12>>>>>
+1)Redux provides us a global that is accessible and modifiable throughout the whole application
+
+2)In redux we store all the states in one global store called store and store them in different slices(sections)
+
+3)In redux we don not update state directly we first dispatch an action which calls a reducer function that update the state
+
+4)All updates in redux should be done immutably
+
+5)the name field in the createSlice function is used to define the name of the slice in the Redux store, while the name of the reducer in store.js is used to specify the name of the slice in the store state object.
+If the names don't match, the slice and its state will still exist in the store, but it may be harder to access or manipulate the data in the slice. For example, if you name the slice "counterSlice" in createSlice and then try to access the state using store.getState().counter, it won't work because the slice name is different.
+So to avoid confusion and make it easier to access the state in the store, it's best practice to keep the slice name and reducer name the same.
+In the code you provided, the name of the slice is "counter", and the name of the reducer is "counterReducer", which are slightly different but still related. This won't cause any issues as long as you use the correct name when accessing the state in the store.
+
+6)Any time an action has been dispatched and the Redux store has been updated, useSelector will re-run our selector function. If the selector returns a different value than last time, useSelector will make sure our component re-renders with the new value.
+
+7)useselector and usedipatch hook in redux
+useSelector is a hook that allows you to extract data from the Redux store state. It takes a function as an argument that maps the store state to a value that you want to use in your component. Whenever the store state changes, useSelector will re-render your component with the new value. Here's an example of how to use useSelector:
+
+import { useSelector } from 'react-redux';
+
+function MyComponent() {
+const counter = useSelector(state => state.counter);
+return <div>{counter}</div>;
+}
+
+useDispatch is a hook that allows you to dispatch actions to the Redux store. It returns a reference to the dispatch function that you can use to dispatch actions from your component. Here's an example of how to use useDispatch:
+
+import { useDispatch } from 'react-redux';
+
+function MyComponent() {
+const dispatch = useDispatch();
+const handleClick = () => {
+dispatch({ type: 'INCREMENT' });
+};
+return <button onClick={handleClick}>Increment</button>;
+}
+
+Day 13>>>>>
+1)Test Driven Development
+We write test cases even before writing our code.
+
+2)different types of testing
+-Manual Testing -: It requires a manual labor to test the app.
+-automated testing -: It is some code used to test another code.
+-end to end testing
+-selenium testing
+-headles browsers
+-unit testing
+-integration testing
+
+3)Steps for testing
+--We are installing and using react testing library and jest.
+--Now we have to configure jest so we use npx jest --init
+--we will specify whether we are using typescript,testing environment(jsdom for frontend),want to see coverage reports,provider used for coverage(we are using babel),
+--Install jest-environment-jsdom cause it is not shipped by default after version 28
+--create our first test file we will create **tests** in our components folder for a normal javascript file that contain JS code to return sum of two number
+--when we import sum file(file that contains sum function) jest throws an error that cannot use import statement outside a module and hence we need to configure jest with babel we need babel-jest for that
+--when we try to import header component for testing jest does not know jsx hence we need one more library @babel/preset-react and a configuration ["@babel/preset-react", {"runtime":"automatic"}]
+
+{
+"presets": [["@babel/preset-env", {"targets": {"node": "current"}}],["@babel/preset-react", {"runtime":"automatic"}]]
+}
+
+4)What is jsdom
+jsdom is a JavaScript implementation of the Document Object Model (DOM) used by web browsers. It allows you to simulate a browser environment within a Node.js environment, which is useful for testing web applications using tools like Jest.
+In the context of Jest, jsdom is used to provide a DOM implementation for tests to interact with. This allows you to write tests that interact with the DOM just like a real web application would. jsdom also provides other browser-related functionality such as the window and document objects, which are often used in web application development.
+Jest uses jsdom by default when running tests, so you don't need to install or configure anything to use it. However, you can configure Jest to use a custom implementation of the DOM if you need to.
+Keep in mind that jsdom only provides a partial implementation of the browser environment, and some browser APIs may not be available or may behave differently than they would in a real browser. It's important to be aware of these limitations when writing tests that interact with the DOM or other browser APIs.
+
+5)When you run tests with Jest, it automatically compiles and executes your JavaScript code, but it does not handle other file types such as images by default. If your code includes images, you may need to create mock files for those images in order to test your code properly.
+
+In the case of PNG images, you can create a mock file for the image by creating a new JavaScript file that exports the path to the image file. This allows Jest to correctly resolve the image path in your code, while using the mock file instead of the actual image file during testing.
+
+Here's an example of how you can create a mock file for a PNG image:
+
+// **mocks**/image.png.js
+module.exports = '/path/to/mock/image.png';
+Then, you can update the Jest configuration to use this mock file for PNG images. In your jest.config.js file, you can add the following configuration:
+
+module.exports = {
+// ...
+moduleNameMapper: {
+'\\.png$': '<rootDir>/**mocks**/image.png.js',
+},
+};
+This configuration tells Jest to use the **mocks**/image.png.js file whenever it encounters a .png file in your code.
+By creating a mock file for your image, you can test your code without relying on the actual image file. This can make your tests faster and more reliable, since they won't be affected by changes to the image file or the external environment.
+
+6)Do not have provider error is thrown because we are rendering just header in header.test.js and hence we need to wrap it in provider and provide store to it
+
+7)In order to use Router(creatBrowserRouter) in our test file we need StaticRouter that is imported from react-router-dom/server
+
+8)We cannot use fetch in jest and hence we create dummy function for fetch using jest.fn() as per following
+
+global.fetch=jest.fn(()=>{
+Promise.resolve({
+json: Promise.resolve(data)
+})
+})
+
+9)To enable HMR for testing
+
+'watch-test':'jest --watch'
+
+10)Mock jest function in test file
+In the context of a Jest test file, you may want to mock global.fetch in order to test code that uses it. This is typically done to avoid making actual network requests and to control the response of the function.
+
+The code you provided is an example of how you can mock global.fetch to return fake data, instead of making a network request. Here's what each line of the code does:
+
+global.fetch = jest.fn(() =>
+Promise.resolve({
+json: () => Promise.resolve(fakeData),
+})
+);
+global.fetch = jest.fn(): This line sets global.fetch to a Jest mock function. This means that when any part of your code calls global.fetch, it will actually be calling this mock function instead of the real fetch function.
+
+() => ...: This is an arrow function that is passed as an argument to jest.fn(). It is the implementation of the mock function.
+
+Promise.resolve({json: () => Promise.resolve(fakeData)}): This line returns a Promise that resolves to an object with a json() method. The json() method is also a Promise that resolves to fakeData. In other words, this mock function returns a Promise that looks like the response object that fetch would normally return.
+
+fakeData in this context is a variable that should contain the fake data that you want to use for your test.
+
+By mocking global.fetch in this way, you can test your code that depends on the fetch function without making actual network requests, and with control over the data that is returned.
+
+11)enzyme vs react testing library
+Enzyme and React Testing Library are both popular testing libraries for React applications, but they differ in their approach to testing and the types of tests they are best suited for.
+
+Enzyme is a testing utility library for React that provides a shallow and full rendering API, as well as utilities to manipulate and traverse the React component tree. Enzyme's API is designed to be intuitive and easy to use for developers familiar with jQuery. Enzyme is good for testing React components in isolation, and is especially useful for testing component behavior and props.
+
+React Testing Library, on the other hand, is a lightweight testing library that is designed to encourage testing best practices. It focuses on testing the behavior of your components as they are used by real users, rather than testing implementation details. React Testing Library provides a set of utilities that make it easy to query and interact with the DOM, and encourages testing the rendered output of your components.
+
+Both Enzyme and React Testing Library have their strengths and weaknesses, and the best choice depends on your specific testing needs and preferences. If you want to test component behavior in isolation, Enzyme may be a good choice. If you want to test your components from a user's perspective, React Testing Library may be a better fit.
+
+12)what is jest and why do we use it
+Jest is a JavaScript testing framework that is widely used in the React community for testing React applications. It provides a simple and powerful way to write tests, and comes with features like test runners, test suites, and assertions to make it easier for developers to write and run tests.
+
+Jest is a popular choice for testing React applications because it was created by Facebook, the creators of React, and is designed specifically for testing React code. It also has a large community of users who contribute to its development and provide support to other users.
+
+Some benefits of using Jest for testing include:
+
+Easy setup and configuration
+Built-in test runners and assertions
+Supports both synchronous and asynchronous testing
+Provides a wide range of mock functions to simplify testing
+Can be integrated with other testing tools and frameworks, such as Enzyme and React Testing Library.
+Overall, Jest provides a powerful and flexible tool for testing React applications, and is widely used by developers and organizations for testing their code.
+
+Day 14>>>>>
+Machine Coding interview
+
+1)Managing Time is toughest to crack in a machine coding interview
+-You can do practice to crack the time in interview(this is before interview thing)
+-planning will help you to crack in interview in runtime
+
+Steps for machine coding:-
+➡️Requirements clarification
+🔴Understand Features first
+🔴Tech Stack:-Specify your interviewer what are you going to use for building app.for eg:- You can tell i am going to use react,tailwindcss,redux,react-router-dom,bundler,testing libarary,etc.
+➡️UI Design
+🔴Discuss What are you going to include in your app.
+🔴Tell them about all your components and the pages you will direct to.
+
+2)Path parameters vs Query parameters
+Path parameters and query parameters are both used to pass data to a web application, but there are some differences between them.
+
+Path parameters are part of the URL path and are used to identify a specific resource. They are typically used to retrieve data related to a specific identifier or object. In a React Router, path parameters are defined in the route using a colon followed by the parameter name. For example, in the route /users/:userId, userId is a path parameter.
+
+Query parameters, on the other hand, are added to the end of the URL and are used to provide additional information about the resource being requested. They are typically used for sorting, filtering, or searching data. Query parameters are defined using the ? character in the URL followed by the parameter name and value, separated by =. Multiple query parameters can be separated by &. For example, in the URL /search?q=react&sort=asc, q and sort are query parameters.
+
+In summary, path parameters are used to identify a specific resource, while query parameters are used to provide additional information about the resource being requested.
+
+3)URLsearchparams
