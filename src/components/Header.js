@@ -19,14 +19,11 @@ const Header = () => {
             About us
           </li>
         </Link>
-        <Link to="/instamart">
+        <Link to="/contact">
           <li className="rounded-md border-2 border-white p-1 hover:bg-white hover:text-black">
-            Instamart
+            Contact us
           </li>
         </Link>
-        <li className="rounded-md border-2 border-white p-1 hover:bg-white hover:text-black">
-          Contact us
-        </li>
         <Link to="/cart">
           <li
             data-testid="cart-header"

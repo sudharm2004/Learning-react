@@ -8,6 +8,7 @@ const cart = createSlice({
   },
   reducers: {
     addCartItem: (state, action) => {
+      console.log("add cart item called");
       // find is a method that returns the first element that matches the given condition
       const isItemPresent = state.items.find(
         (element) => element.id == action.payload.id
@@ -28,7 +29,9 @@ const cart = createSlice({
       state.totalItems++;
     },
     removeCartItem: (state, action) => {
+      console.log("remove cart item called");
       state.items.forEach((element, index) => {
+        console.log(element);
         if (element.id === action.payload.id) {
           state.items[index] = {
             ...action.payload,

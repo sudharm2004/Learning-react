@@ -64,9 +64,9 @@ const RestaurantDetails = () => {
         </div>
       </div>
 
-      <div className="Menu justi flex justify-around">
-        {/* Menu of the restaurant */}
-        <div className="Menu custom-scrollbar flex h-96 flex-col items-center overflow-scroll">
+      {/* Menu of the restaurant */}
+      <div className="Menu menu-height justi mt-4 flex justify-around overflow-auto">
+        <div className="Menu scrollbar menu-height flex flex-col items-center overflow-auto border-2 border-gray-200 p-4 shadow-md">
           {Object.values(Restaurant?.data?.menu?.items).map((element) => {
             return <Menu key={element?.id} menu={element} />;
           })}

@@ -13,10 +13,9 @@ import UserContext from "./utils/Usercontext";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Cart from "./components/Cart";
+import Contact from "./components/Contact";
 // import ProfileClass from './components/ProfileClass'
 // import AboutClass from './components/AboutClass';
-
-const Instamart = lazy(() => import("./components/Instamart"));
 
 const Applayout = () => {
   const [user, setUser] = useState({
@@ -29,7 +28,6 @@ const Applayout = () => {
         <UserContext.Provider value={{ user, setUser }}>
           <Header />
           <Outlet />
-          <Footer />
         </UserContext.Provider>
       </Provider>
     </>
@@ -44,11 +42,21 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: (
+          <>
+            <Body />
+            <Footer />
+          </>
+        ),
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <>
+            <About />
+            <Footer />
+          </>
+        ),
         // element:<AboutClass/>,
         children: [
           {
@@ -60,19 +68,25 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurant/:id",
-        element: <RestaurantDetails />,
-      },
-      {
-        path: "/instamart",
         element: (
-          <Suspense fallback={<Shimmer />}>
-            <Instamart />
-          </Suspense>
+          <>
+            <RestaurantDetails />,
+            <Footer />
+          </>
         ),
       },
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/contact",
+        element: (
+          <>
+            <Contact />
+            <Footer />
+          </>
+        ),
       },
     ],
   },
