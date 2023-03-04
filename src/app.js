@@ -8,7 +8,6 @@ import About from "./components/About";
 import Error from "./components/Error";
 import RestaurantDetails from "./components/RestaurantDetails";
 import Profile from "./components/Profile";
-import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/Usercontext";
 import { Provider } from "react-redux";
 import store from "./store/store";
@@ -67,7 +66,7 @@ const appRouter = createBrowserRouter([
         ],
       },
       {
-        path: "/restaurant/:id",
+        path: "/restaurant/:restaurantId",
         element: (
           <>
             <RestaurantDetails />,
@@ -77,7 +76,12 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <>
+            <Cart />
+            <Footer />
+          </>
+        ),
       },
       {
         path: "/contact",

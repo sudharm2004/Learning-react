@@ -1,9 +1,11 @@
 import { Outlet } from "react-router-dom";
+import ClearCartAlert from "./ClearCartAlert";
+import RestaurantDetailsShimmer from "./shimmers/RestaurantDetailsShimmer";
 
 const About = () => {
   return (
     <>
-      <div className="flex-grow p-8">
+      <div className="flex-grow bg-white p-8">
         <h2 className="mb-4 text-xl font-bold">Our Story</h2>
         <p className="mb-4">
           We started our food delivery service with the goal of bringing

@@ -1,18 +1,21 @@
 import { useParams } from "react-router-dom";
 import { RESTAURANTCARD_IMG_CDN } from "../config";
-import Shimmer from "./Shimmer";
+import RestaurantDetailsShimmer from "./shimmers/RestaurantDetailsShimmer";
 import Menu from "./Menu";
 import useRestaurantDetails from "../utils/useRestaurantDetails";
 import ItemsPurchased from "./ItemsPurchased";
+import ClearCartAlert from "./ClearCartAlert";
 
 const RestaurantDetails = () => {
-  const { id } = useParams();
-  const Restaurant = useRestaurantDetails(id);
-  console.log(Restaurant);
-  if (Restaurant == null) return <Shimmer />;
+  const { restaurantId } = useParams();
+  const Restaurant = useRestaurantDetails(restaurantId);
+  if (Restaurant == null) return <RestaurantDetailsShimmer />;
 
   return (
     <div className="RestaurantDetails">
+      {/* The alert box to shown when user tries to order from another restaurant */}
+      <ClearCartAlert />
+
       {/* This below code contains the infomation about hotel */}
       <div className="sticky flex  justify-between bg-black p-10">
         <img
@@ -56,8 +59,12 @@ const RestaurantDetails = () => {
         <div className="flex flex-col justify-center border-2 border-white p-3 text-xl text-white">
           <div>
             {Restaurant?.data?.aggregatedDiscountInfo?.descriptionList.map(
-              (element) => {
-                return <div className="my-8">{element.meta}</div>;
+              (element, index) => {
+                return (
+                  <div key={index} className="my-8">
+                    {element.meta}
+                  </div>
+                );
               }
             )}
           </div>
@@ -65,10 +72,18 @@ const RestaurantDetails = () => {
       </div>
 
       {/* Menu of the restaurant */}
-      <div className="Menu menu-height justi mt-4 flex justify-around overflow-auto">
-        <div className="Menu scrollbar menu-height flex flex-col items-center overflow-auto border-2 border-gray-200 p-4 shadow-md">
+      <div className="Menu-itemspurchased-container menu-height justi mt-4 flex justify-around">
+        <div className="Menu-container scrollbar menu-height flex flex-col items-center overflow-auto border-2 border-gray-200 p-4 shadow-md">
           {Object.values(Restaurant?.data?.menu?.items).map((element) => {
-            return <Menu key={element?.id} menu={element} />;
+            return (
+              <Menu
+                key={element?.id}
+                menu={element}
+                resId={Restaurant?.data?.id}
+                resCloudinaryImageId={Restaurant?.data?.cloudinaryImageId}
+                resName={Restaurant?.data?.name}
+              />
+            );
           })}
         </div>
 

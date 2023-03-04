@@ -32,6 +32,8 @@ const useRestaurantList = () => {
   useEffect(() => {
     getCardData();
   }, []);
+  console.log("allcards");
+  console.log(allCards);
   return [allCards, filteredCards, filterCards];
 };
 

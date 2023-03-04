@@ -20,9 +20,9 @@ PACKAGE-LOCK.JSON USE-CASE:-
 With package-lock.json, when a developer runs npm install, npm will check the package-lock.json file and install the exact versions of packages that are specified in the file. This ensures that all developers are using the same versions of packages, regardless of which package manager they are using or which version of npm they have installed.
 
 4)What does npm checks when you run npm install command?
- after running the command npm install, npm will check both package.json and package-lock.json files, if the package-lock.json is present, it will use that file to determine which versions of packages to install, and if not, it will use the version specified in the package.json file. It will then install or update the packages as necessary and update the package-lock.json file to ensure that the correct versions of packages are specified.
+after running the command npm install, npm will check both package.json and package-lock.json files, if the package-lock.json is present, it will use that file to determine which versions of packages to install, and if not, it will use the version specified in the package.json file. It will then install or update the packages as necessary and update the package-lock.json file to ensure that the correct versions of packages are specified.
 
-5)What is parcel/Webpack?Why do we need it? 
+5)What is parcel/Webpack?Why do we need it?
 Parcel or webpack are the bundlers.
 Bundlers:-
 A bundler is a development tool that combines many JavaScript code files into a single one that is production-ready loadable in the browser. A fantastic feature of a bundler is that it generates a dependency graph as it traverses your first code files.
@@ -30,24 +30,25 @@ This implies that beginning with the entry point you specified, the module bundl
 VIDEO REFERENCE :- https://youtu.be/3UWlufSzO4k
 
 6)what is difference between main and source in package.json?
- the main field is used to specify the primary JavaScript file that should be executed when the package is imported or required, it's used by package manager to run the package. The source field is used to specify the source code of the package, it's less common than the main field and it's not used by the package manager to execute the package but it's used by some other tools to understand the package source code.
+the main field is used to specify the primary JavaScript file that should be executed when the package is imported or required, it's used by package manager to run the package. The source field is used to specify the source code of the package, it's less common than the main field and it's not used by the package manager to execute the package but it's used by some other tools to understand the package source code.
 
 7)What is .parcel-cache?
 parcel stores the information of your build and uses it your while rebuilding it.The bundler do this so that it does not have to build the app again rather it uses previous information and helps in building faster.It's a reason behing faster development mode in parcel.
 
- 8)Superpowers of parcel?
- Parcel advantages:-
-1) bundling our code
-2)minifying the code
-3)removing all the console log(cleaning the code)
-4)it does image optimization(compress them)
-5)it provides caching while development->The time required to build development build first is largest and subsequently the time required decreases
-6)It compresses your files(decreases the size of your js,html,css files). for eg:-it changes names of your variables (with large names )in js to some small names like alphabets/something.
-7)It also handles compatability with older versions.
-8)It enables https on development build.
-9)It manages your port number.
-10)It uses consistent hashing algorithm.
-11)It has zero configuration.
+8)Superpowers of parcel?
+Parcel advantages:-
+
+1. bundling our code
+   2)minifying the code
+   3)removing all the console log(cleaning the code)
+   4)it does image optimization(compress them)
+   5)it provides caching while development->The time required to build development build first is largest and subsequently the time required decreases
+   6)It compresses your files(decreases the size of your js,html,css files). for eg:-it changes names of your variables (with large names )in js to some small names like alphabets/something.
+   7)It also handles compatability with older versions.
+   8)It enables https on development build.
+   9)It manages your port number.
+   10)It uses consistent hashing algorithm.
+   11)It has zero configuration.
 
 9)What is npx?
 npm and npx are both command-line tools that are included with Node.js and are used to manage and install packages for Node.js projects, but they have slightly different use cases and functions.
@@ -75,16 +76,16 @@ import { funcA } from './moduleA';
 import { funcB } from './moduleB';
 
 moduleA exports two functions, funcA and funcB
-moduleB exports two functions,  funcB
+moduleB exports two functions, funcB
 
 In this example, main.js only uses the funcA function from moduleA and funcB from moduleB, the other funcB from moduleA is not used by the application.
 
 When the application is built, a JavaScript bundler like webpack or Rollup will analyze the import and export statements in the code, and it will determine that the funcB function from moduleA is not used by the application. So it will eliminate that function from the final bundle, resulting in a smaller bundle size and improved performance.
 
-
-12)What is `.gitignore`? What should we add and not add into it? 
+12)What is `.gitignore`? What should we add and not add into it?
 `.gitignore` is a file in a Git repository that specifies files or directories that should be ignored by Git and not tracked or included in commits.The files that are required only development and auto-generated are added into it.
-
 
 13)what is dist folder?
 The dist (short for "distribution") folder is a common name for the directory that contains the final, deployed version of a web application. This folder typically contains the HTML, CSS, JavaScript, and other assets that make up the application, in a format that is optimized for production use.
+
+https://discord.com/channels/1057696352890519662/1075469702236733543/1080478398587080744

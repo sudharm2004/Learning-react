@@ -1,38 +1,57 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartItem, removeCartItem } from "../store/CartSlice";
+import { useParams } from "react-router-dom";
 
-const Counter = ({ menu }) => {
-  console.log("counter called");
-  console.log(menu.name);
+const Counter = ({ menu, resCloudinaryImageId, resName }) => {
+  const { restaurantId } = useParams();
   const [counter, setCounter] = useState(0);
 
   const cartItems = useSelector((store) => store.cart.items);
+  const updateItems = useSelector((store) => store.cart.updateItems);
 
   useEffect(() => {
     const item = cartItems.find((element) => element.id == menu.id);
+    console.log("useeffect called");
     if (item) {
       setCounter(item.itemCount);
+    } else {
+      setCounter(0);
     }
   }, [cartItems]);
 
   const dispatch = useDispatch();
 
   const handleIncrementButton = () => {
-    console.log("handleIncrementCalled");
-    dispatch(addCartItem(menu));
-    setCounter(counter + 1);
+    console.log("handleIncrementCalled " + menu.name);
+    // console.log(restaurantId);
+    dispatch(
+      addCartItem({ menu, restaurantId, resCloudinaryImageId, resName })
+    );
+    console.log("update items value in handle increment " + updateItems);
+    // if (updateItems == 1) {
+    //   console.log("conditional handleincrement called");
+    //   setCounter(counter + 1);
+    // }
   };
 
   const handleDecrementButton = () => {
-    console.log("handleDecrementCalled");
+    // console.log("handleDecrementCalled");
     if (counter != 0) {
       dispatch(removeCartItem(menu));
       setCounter(counter - 1);
     }
   };
-
-  return (
+  console.log(menu);
+  console.log(counter);
+  return counter == 0 ? (
+    <button
+      onClick={handleIncrementButton}
+      className="border-l-1 border-gray-300 bg-white p-1 text-green-600 shadow-md"
+    >
+      Order
+    </button>
+  ) : (
     <div className="counter ">
       <button
         onClick={handleDecrementButton}

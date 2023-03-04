@@ -1,11 +1,9 @@
-//This hook is used to fetch data of a dish from api 
+//This hook is used to fetch data of a dish from api
 
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from "react";
 
-console.log('useRestaurant')
-
-const useRestaurantDetails=(id)=>{
-    const [Restaurant, setRestaurant] = useState(null);
+const useRestaurantDetails = (id) => {
+  const [Restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
     getRestaurantDetails();
@@ -18,11 +16,9 @@ const useRestaurantDetails=(id)=>{
     );
     const result = await data.json();
     setRestaurant(result);
-  console.log('useRestaurant-async-function')
   }
-  console.log('useRestaurant-function')
   return Restaurant;
-}
+};
 export default useRestaurantDetails;
 
 // The hook returns the current value of the Restaurant state, which is initially set to null. However, once the API call is finished and the state is updated with the data from the API, the hook will return the updated value of Restaurant the next time it is called.

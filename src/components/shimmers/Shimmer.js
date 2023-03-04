@@ -1,7 +1,7 @@
 const Shimmer = () => {
   return (
     <div
-      className="Shimmer m-3 flex flex-wrap justify-between"
+      className="Shimmer m-3 flex flex-wrap justify-center"
       data-testid="shimmer"
     >
       {Array(20)

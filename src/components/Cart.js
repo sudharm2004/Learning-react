@@ -1,31 +1,26 @@
 import { useSelector } from "react-redux";
-import { RESTAURANTCARD_IMG_CDN } from "../config";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((store) => store.cart.items);
   console.log(cart);
   return (
-    <div className="Cart flex flex-wrap justify-center">
-      Cart Page
-      {console.log(cart)}
-      {cart.map((item) => {
-        return (
-          <div
-            className="Food-item m-2 flex w-64 flex-col space-y-1 break-words rounded-md border-2 p-3 hover:shadow-lg"
-            key={item.id}
-          >
-            <img
-              className="w-full"
-              src={RESTAURANTCARD_IMG_CDN + item.cloudinaryImageId}
-              alt="restaurantLogo"
-            />
-            <h2 className="text-lg font-bold">{item.name}</h2>
-            <span className="text-sm">Price:-{item.price / 100}</span>
-            <h5 className="">max delivery time:- {item.maxDeliveryTime}</h5>
-            <h1 className="bold text-3xl">Item Count:-{item.itemCount}</h1>
-          </div>
-        );
-      })}
+    <div className="Cart  flex h-full flex-wrap items-center justify-center ">
+      <div>
+        <div className="my-2 w-[278px] p-4  shadow-2xl">
+          <img
+            className="my-2 h-[222px] w-full"
+            src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_480/Cart_empty_-_menu_2x_ejjkf2"
+            alt="Carty empty image"
+          />
+          <h1 className="bold mt-2 text-center text-xl">Your Cart is empty</h1>
+        </div>
+        <Link to="/">
+          <button className="w-full rounded bg-orange-500 p-2 text-center text-white hover:shadow-md">
+            Search Restaurants Near you
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -1,48 +1,29 @@
 import React from "react";
+import Aboutme from "./Aboutme";
 
 const Contact = () => {
   return (
-    <div className="flex-grow p-8">
-      <p className="mb-4">
-        You can reach out to me using any of the following methods:
-      </p>
-
-      <ul className="mb-8 list-inside list-disc">
-        <li>
-          <a
-            href="mailto:youremail@example.com"
-            className="text-blue-500 hover:underline"
-          >
-            Email me
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/yourgithubusername"
-            className="text-blue-500 hover:underline"
-          >
-            Check out my GitHub
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitter.com/yourtwitterusername"
-            className="text-blue-500 hover:underline"
-          >
-            Follow me on Twitter
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/yourlinkedinusername"
-            className="text-blue-500 hover:underline"
-          >
-            Connect with me on LinkedIn
-          </a>
-        </li>
-      </ul>
-
-      <p>Looking forward to hearing from you!</p>
+    <div className="flex  justify-evenly p-8">
+      <Aboutme />
+      <div className="w-[800px] pl-2">
+        <h1 className="bold mb-2 text-2xl">About Me</h1>
+        Hello and welcome to my personal website! My name is Sudharm Jadhav, and
+        I am a student with a passion for learning and exploring new ideas. As a
+        student, I am constantly seeking out new challenges and opportunities to
+        grow. I am currently pursuing a degree in BBA-CA and have a strong
+        academic record. In addition to my academic pursuits, I am also involved
+        in a number of extracurricular activities on campus. I am a member of
+        Alpha Coding Club,MITACSC and have held several leadership positions
+        during my time with the group In my free time, I enjoy doing
+        workout,reading and am always on the lookout for new ways to expandmy
+        horizons and learn something new. As I look toward the future, I am
+        excited to see where my passion for learning will take me. Whether it's
+        pursuing further education or diving into a new career, I am confident
+        that I have the drive and determination to succeed. Thank you for taking
+        the time to learn more about me. Please feel free to get in touch if you
+        have any questions or if you'd like to chat about web development,
+        Anime, or Gym. I look forward to hearing from you!
+      </div>
     </div>
   );
 };

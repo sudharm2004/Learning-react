@@ -1,9 +1,8 @@
 import Restaurantlist from "./Restaurantlist";
-import Shimmer from "./Shimmer";
+import Shimmer from "./shimmers/Shimmer";
 import useOnline from "../utils/useOnline";
 import useInput from "../utils/useInput";
 import useRestaurantList from "../utils/useRestaurantList";
-import Counter from "./Counter";
 const Body = () => {
   const isonline = useOnline();
 
@@ -16,10 +15,10 @@ const Body = () => {
   }
   return (
     <div data-testid="body" className="Body flex flex-col items-start">
-      <div className="SearchInputContainer my-4 mx-6">
+      <div className="SearchInputContainer my-4  flex w-full justify-center">
         <input
           type="text"
-          className="mx-3 rounded border-2 border-black p-1"
+          className="mx-3 w-1/2 rounded border-2 border-black p-1"
           id="Search-Btn"
           placeholder="Enter the Restaurant"
           value={searchTxt}

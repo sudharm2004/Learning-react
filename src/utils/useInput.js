@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 const useInput = (inputId) => {
-  console.log("hel");
   const [value, setvalue] = useState("");
   const updateSearchBtn = (event) => {
     setvalue(event.target.value);
