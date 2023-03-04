@@ -22,7 +22,7 @@ const useRestaurantList = () => {
 
   async function getCardData() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6248966&lng=73.8566087&page_type=DESKTOP_WEB_LISTING"
+      "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6248966&lng=73.8566087&page_type=DESKTOP_WEB_LISTING"
     );
     const result = await data.json();
     setfilteredCards(result?.data?.cards[2].data?.data?.cards);
