@@ -1,18 +1,25 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartItem, removeCartItem } from "../store/CartSlice";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 const Counter = ({ menu, resCloudinaryImageId, resName }) => {
-  const { restaurantId } = useParams();
+  let { restaurantId } = useParams();
   const [counter, setCounter] = useState(0);
-
+  const location = useLocation();
+  // console.log(location.pathname);
   const cartItems = useSelector((store) => store.cart.items);
   const updateItems = useSelector((store) => store.cart.updateItems);
 
+  if (location.pathname == "/cart") {
+    console.log(location.pathname);
+    console.log("cart path");
+    restaurantId = useSelector((store) => store.cart.restaurantId);
+  }
+
   useEffect(() => {
     const item = cartItems.find((element) => element.id == menu.id);
-    console.log("useeffect called");
+    // console.log("useeffect called");
     if (item) {
       setCounter(item.itemCount);
     } else {
@@ -23,12 +30,12 @@ const Counter = ({ menu, resCloudinaryImageId, resName }) => {
   const dispatch = useDispatch();
 
   const handleIncrementButton = () => {
-    console.log("handleIncrementCalled " + menu.name);
+    // console.log("handleIncrementCalled " + menu.name);
     // console.log(restaurantId);
     dispatch(
       addCartItem({ menu, restaurantId, resCloudinaryImageId, resName })
     );
-    console.log("update items value in handle increment " + updateItems);
+    // console.log("update items value in handle increment " + updateItems);
     // if (updateItems == 1) {
     //   console.log("conditional handleincrement called");
     //   setCounter(counter + 1);
@@ -42,8 +49,8 @@ const Counter = ({ menu, resCloudinaryImageId, resName }) => {
       setCounter(counter - 1);
     }
   };
-  console.log(menu);
-  console.log(counter);
+  // console.log(menu);
+  // console.log(counter);
   return counter == 0 ? (
     <button
       onClick={handleIncrementButton}

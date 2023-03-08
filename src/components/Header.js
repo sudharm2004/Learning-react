@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const items = useSelector((store) => store.cart.totalItems);
   return (
-    <header className=" flex  w-full min-w-full items-center justify-between bg-slate-900 p-2 text-white">
+    <header className=" flex  w-full min-w-full items-center justify-between bg-slate-900 p-2 text-white shadow-xl">
       <img data-testid="header-logo" src={logo} alt="Logo" className="w-52" />
       <ul className="flex space-x-3 p-5">
         <Link to="/">

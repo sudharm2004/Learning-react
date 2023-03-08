@@ -6,9 +6,8 @@ import useRestaurantList from "../utils/useRestaurantList";
 const Body = () => {
   const isonline = useOnline();
 
-  const [searchTxt, updateSearchTxt] = useInput("Search-Btn");
-
   const [allcards, filteredCards, filterCards] = useRestaurantList();
+  const [searchTxt, updateSearchTxt] = useInput(filterCards);
 
   if (!isonline) {
     return <h1>Oops it looks like you went offline</h1>;
@@ -22,9 +21,15 @@ const Body = () => {
           id="Search-Btn"
           placeholder="Enter the Restaurant"
           value={searchTxt}
-          onChange={updateSearchTxt}
+          onChange={(event) => {
+            updateSearchTxt(event, filterCards);
+            // filterCards(searchTxt);
+          }}
         />
-
+        {/* onBlur={() => {
+            filterCards(undefined);
+          }} */}
+        {/* 
         <button
           className="rounded-md bg-black p-1 text-white"
           id="filterCardsButton"
@@ -36,7 +41,7 @@ const Body = () => {
           }}
         >
           Search Restaurant
-        </button>
+        </button> */}
       </div>
 
       {filteredCards === undefined ? (
@@ -44,6 +49,12 @@ const Body = () => {
       ) : (
         <Restaurantlist cards={filteredCards} />
       )}
+      {/* 
+      {filteredCards.length === 0 ? (
+        <span>No Such Restaurant around YOu!:(</span>
+      ) : (
+        <Restaurantlist cards={filteredCards} />
+      )} */}
     </div>
   );
 };

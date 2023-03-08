@@ -25,10 +25,34 @@ import FoodItem from "./FoodItem";
 // };
 
 const Restaurantlist = (props) => {
+  if (props.cards === "fetch error") {
+    return (
+      <div className=" my-3 flex w-full flex-wrap justify-center text-2xl font-bold">
+        Oops!Looks like we were not able to fetch the data may anyone of the
+        following had happened
+        <ol className="text-lg font-bold">
+          <li>
+            CORS ERROR:-I am using swiggy public api for the fetching data and
+            due to CORS error the request must have been not resolved
+          </li>
+          <li>
+            Network ERROR:-May be due to Network we were not able to fetch the
+            data
+          </li>
+          <li>
+            Server ERROR:-It looks like there was a problem fetching the data.
+            This may be due to a server issue. Please try again later or contact
+            suppor
+          </li>
+        </ol>
+      </div>
+    );
+  }
+
   return (
     <div
       data-testid="restaurant-list"
-      className=" my-3 flex flex-wrap justify-center"
+      className=" my-3 flex w-full flex-wrap justify-center"
     >
       {props.cards.map((restaurant) => {
         return (

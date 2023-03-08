@@ -11,6 +11,28 @@ const RestaurantDetails = () => {
   const Restaurant = useRestaurantDetails(restaurantId);
   if (Restaurant == null) return <RestaurantDetailsShimmer />;
 
+  if (Restaurant === "fetch error") {
+    <div className=" my-3 flex w-full flex-wrap justify-center">
+      Oops!Looks like we were not able to fetch the data may anyone of the
+      following had happened
+      <ol>
+        <li>
+          CORS ERROR:-I am using swiggy public api for the fetching data and due
+          to CORS error the request must have been not resolved
+        </li>
+        <li>
+          Network ERROR:-May be due to Network we were not able to fetch the
+          data
+        </li>
+        <li>
+          Server ERROR:-It looks like there was a problem fetching the data.
+          This may be due to a server issue. Please try again later or contact
+          suppor
+        </li>
+      </ol>
+    </div>;
+  }
+
   return (
     <div className="RestaurantDetails">
       {/* The alert box to shown when user tries to order from another restaurant */}

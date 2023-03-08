@@ -40,10 +40,10 @@ const Cart = () => {
 
   return (
     <div className="Cart my-2 flex w-full flex-wrap items-center justify-center">
-      <div className="border-1 w-80 border-black p-2 shadow-lg">
-        <div className=" bold my-2 flex w-full items-center justify-between p-4 text-xl">
+      <div className="border-1 w-80 border-black p-4 shadow-lg">
+        <div className=" bold my-2 flex w-full items-center  p-4 text-xl">
           <img
-            className="my-2 w-20"
+            className="my-2 mx-2 w-20"
             src={RESTAURANTCARD_IMG_CDN + resCloudinaryImageId}
             alt="Carty empty image"
           />

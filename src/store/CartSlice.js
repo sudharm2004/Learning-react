@@ -13,7 +13,7 @@ const cart = createSlice({
   },
   reducers: {
     addCartItem: (state, action) => {
-      console.log("add cart item called");
+      // console.log("add cart item called");
       // find is a method that returns the first element that matches the given condition
 
       // console.log(action.payload);
@@ -38,7 +38,7 @@ const cart = createSlice({
           }
           state.totalItems++;
         } else {
-          console.log("cannot add the item");
+          // console.log("cannot add the item");
           state.updateItems = 0;
         }
       } else {
@@ -48,10 +48,10 @@ const cart = createSlice({
         state.items.push({ ...action.payload.menu, itemCount: 1 });
         state.totalItems++;
       }
-      console.log("update Items in cartslice " + state.updateItems);
+      // console.log("update Items in cartslice " + state.updateItems);
     },
     removeCartItem: (state, action) => {
-      console.log("remove cart item called");
+      // console.log("remove cart item called");
       state.items.forEach((element, index) => {
         console.log(element);
         if (element.id === action.payload.id) {
@@ -73,7 +73,7 @@ const cart = createSlice({
       }
     },
     clearCart: (state, action) => {
-      console.log("clearCart");
+      // console.log("clearCart");
       state.items = [];
       state.updateItems = 1;
       state.totalItems = 0;

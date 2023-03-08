@@ -10,12 +10,16 @@ const useRestaurantDetails = (id) => {
   }, []);
 
   async function getRestaurantDetails() {
-    const data = await fetch(
-      "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/menu/v4/full?lat=18.6248966&lng=73.8566087&menuId=" +
-        id
-    );
-    const result = await data.json();
-    setRestaurant(result);
+    try {
+      const data = await fetch(
+        "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/menu/v4/full?lat=18.6248966&lng=73.8566087&menuId=" +
+          id
+      );
+      const result = await data.json();
+      setRestaurant(result);
+    } catch (error) {
+      setRestaurant("fetch error");
+    }
   }
   return Restaurant;
 };
