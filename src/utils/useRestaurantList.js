@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { restaurantData } from "../config";
+// import { restaurantData } from "../config";
+import { useSelector } from "react-redux";
 
 const useRestaurantList = () => {
+  const geoLocation = useSelector((store) => store.geoLocation.location);
+  console.log(geoLocation);
   const [filteredCards, setfilteredCards] = useState();
   const [allCards, setallCards] = useState();
   //The function is created to show the restaurant that user search for
@@ -26,8 +29,19 @@ const useRestaurantList = () => {
 
   async function getCardData() {
     try {
+      console.log(
+        "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=" +
+          geoLocation.latitude +
+          "&lng=" +
+          geoLocation.longitude +
+          "&page_type=DESKTOP_WEB_LISTING"
+      );
       const data = await fetch(
-        "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6248966&lng=73.8566087&page_type=DESKTOP_WEB_LISTING"
+        "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=" +
+          geoLocation.latitude +
+          "&lng=" +
+          geoLocation.longitude +
+          "&page_type=DESKTOP_WEB_LISTING"
       );
       const result = await data.json();
       setfilteredCards(result?.data?.cards[2].data?.data?.cards);
@@ -41,7 +55,7 @@ const useRestaurantList = () => {
 
   useEffect(() => {
     getCardData();
-  }, []);
+  }, [geoLocation]);
   // console.log("allcards");
   // console.log(allCards);
   return [allCards, filteredCards, filterCards];

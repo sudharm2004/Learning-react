@@ -1,8 +1,10 @@
 //This hook is used to fetch data of a dish from api
-
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const useRestaurantDetails = (id) => {
+  const geoLocation = useSelector((store) => store.geoLocation.location);
+
   const [Restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
@@ -12,7 +14,11 @@ const useRestaurantDetails = (id) => {
   async function getRestaurantDetails() {
     try {
       const data = await fetch(
-        "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/menu/v4/full?lat=18.6248966&lng=73.8566087&menuId=" +
+        "https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/menu/v4/full?lat=" +
+          geoLocation.latitude +
+          "&lng=" +
+          geoLocation.longitude +
+          "&menuId=" +
           id
       );
       const result = await data.json();

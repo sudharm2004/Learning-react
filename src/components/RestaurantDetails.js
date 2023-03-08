@@ -9,7 +9,12 @@ import ClearCartAlert from "./ClearCartAlert";
 const RestaurantDetails = () => {
   const { restaurantId } = useParams();
   const Restaurant = useRestaurantDetails(restaurantId);
-  if (Restaurant == null) return <RestaurantDetailsShimmer />;
+  if (Restaurant == null || Restaurant == undefined) {
+    return <RestaurantDetailsShimmer />;
+  }
+
+  console.log(Restaurant);
+  console.log(Restaurant);
 
   if (Restaurant === "fetch error") {
     <div className=" my-3 flex w-full flex-wrap justify-center">
@@ -35,6 +40,7 @@ const RestaurantDetails = () => {
 
   return (
     <div className="RestaurantDetails">
+      {console.log("restaurantdetails")}
       {/* The alert box to shown when user tries to order from another restaurant */}
       <ClearCartAlert />
 

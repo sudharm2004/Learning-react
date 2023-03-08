@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpeg";
 import { useSelector } from "react-redux";
+import { setLocation } from "../store/GeoLocationSlice";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const userLocation = navigator.geolocation;
+
+    userLocation.getCurrentPosition((data) => {
+      dispatch(
+        setLocation({
+          latitude: data.coords.latitude,
+          longitude: data.coords.longitude,
+        })
+      );
+    });
+  }, []);
   const items = useSelector((store) => store.cart.totalItems);
   return (
     <header className=" flex  w-full min-w-full items-center justify-between bg-slate-900 p-2 text-white shadow-xl">

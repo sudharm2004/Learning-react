@@ -30,7 +30,11 @@ const Restaurantlist = (props) => {
       <div className=" my-3 flex w-full flex-wrap justify-center text-2xl font-bold">
         Oops!Looks like we were not able to fetch the data may anyone of the
         following had happened
-        <ol className="text-lg font-bold">
+        <ol className="space-y-3 text-lg font-bold">
+          <li>
+            Location access denied:- May be you have denied access to access the
+            location
+          </li>
           <li>
             CORS ERROR:-I am using swiggy public api for the fetching data and
             due to CORS error the request must have been not resolved
