@@ -78,6 +78,11 @@ const Cart = () => {
               </div>
             );
           })}
+          <hr className="my-2" />
+          <div className="mt-auto flex justify-between">
+            <span className="text-lg font-bold">SubTotal:-</span>
+            <span className="text-lg font-bold">&#8377;{total}</span>
+          </div>
         </div>
         <button
           className="w-full rounded bg-green-500 p-2 text-center text-white hover:shadow-md"
