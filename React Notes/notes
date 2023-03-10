@@ -826,6 +826,18 @@ To solve this problem, you have to pass the data down as props through all the i
 2)context.displayname is used to provide name to context so that it can be used to track in dev tools
 
 Day 12>>>>>
+
+In a Redux application, actions are dispatched to the store, and the corresponding reducer is called with the current state object and the action object as arguments. The reducer then returns a new state object that reflects the changes made by the action. This new state object becomes the current state of the Redux store, and any connected components are re-rendered with the new state.
+
+In a typical Redux workflow, the process of updating the state happens as follows:
+
+An action is dispatched to the Redux store.
+The corresponding reducer is called with the current state object and the action object as arguments.
+The reducer modifies the state object immutably and returns a new state object that reflects the changes made by the action.
+The new state object becomes the current state of the Redux store, replacing the previous state.
+Any connected components are re-rendered with the new state, and the UI updates to reflect the changes.
+This process ensures that the state of the application is always consistent and predictable, and that any changes to the state are tracked and can be easily traced back to the actions that caused them.
+
 1)Redux provides us a global that is accessible and modifiable throughout the whole application
 
 2)In redux we store all the states in one global store called store and store them in different slices(sections)
