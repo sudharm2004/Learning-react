@@ -377,6 +377,9 @@ For example, consider a website for an e-commerce business that includes a shopp
 Async and Await are two keywords in JavaScript that are used to handle asynchronous operations in a more synchronous manner. The async keyword is used to declare an asynchronous function. The await keyword is used inside an asynchronous function to wait for the resolution of a Promise and to get the resolved value. With await, the code inside the function is blocked until the awaited Promise is resolved, making it look like a synchronous operation. This helps to simplify the handling of asynchronous operations and eliminates the need for callback functions and chaining Promises.
 
 Day 7 >>>>>>
+
+You can create multiple routes in a react app all you do is use createBrowserRouter to create routes and provides them as routes to the <RouterProvider router={router}/>
+
 1)Never create a component inside an component
 
 2)Never create Local state variable(state/usestate) in if-else condition or loops because this will create a incosistency that causes confusion for react.You should not create state variables in if-else statements or in loops in React because they may not be updated properly or may cause unexpected behavior. When a state variable is updated inside an if-else statement or a loop, it may not trigger a re-render of the component and cause unexpected behavior. Additionally, state variables should only be updated using the setState method to ensure that the component is re-rendered whenever the state changes. When you create a state variable inside an if-else statement or a loop, it becomes a local variable, which is not associated with the state of the component and will not trigger a re-render when it changes.
