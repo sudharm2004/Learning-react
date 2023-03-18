@@ -14,6 +14,12 @@ Overall, CDNs are an important tool for improving the performance and availabili
 
 Q.what is crossorigin?
 
+The same-origin policy blocks requests to other domains to prevent malicious websites from accessing sensitive information from a user's browsing session or making unauthorized requests on the user's behalf.
+
+For example, imagine a user is logged into their bank account and visits a malicious website that attempts to make a request to the bank's API to retrieve the user's account balance or transfer funds. Without the same-origin policy, the malicious website could make the request to the bank's API and potentially access the user's sensitive information.
+
+Another example is a cross-site scripting (XSS) attack, where an attacker injects malicious code into a website that the user visits. The malicious code could steal the user's session cookie and send it to the attacker's server, allowing the attacker to impersonate the user and perform actions on their behalf.
+
 Q.Does react append content to root with some existing data or overwrites everything?
 react overwrites everything that is already present in root
 
