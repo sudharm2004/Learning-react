@@ -363,6 +363,10 @@ If you have not defined a onChange event handler for an input in React, it may n
 3)What is state?
 In React, state refers to the data or variables that determine a component's behavior and render information to the user. It is considered as an internal data structure of a React component and is only accessible within the component.
 
+In React, a state is an object that holds data which can change over time. It represents the current state of a component and is managed internally by React.
+
+The state allows components to keep track of data and update it when necessary, triggering re-rendering of the component to reflect the updated state. By utilizing state, React components can dynamically display data, respond to user interactions, and update their appearance accordingly.
+
 4)what is react hooks?
 React hooks are nothing but just a bunch of javascript functions.
 In React, hooks are a way to add state and other React features to functional components. They allow developers to use state and other React features without writing a class component.
