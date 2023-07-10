@@ -259,6 +259,9 @@ In this example, the WelcomeDialog component is the composite component, and the
 11)Type Attribue
 The type attribute is used to specify the type of script is being used
 
+12)Multiple root.render
+In your react app you can have multiple roots and multiple root.render(react.renders) but you should have only one 
+
 Day 4 >>>>>>
 1)Any jsx expression include only one root parent within which all children elements are included and further child elements can be included in those children elements.
 
