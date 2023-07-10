@@ -325,6 +325,36 @@ Day 5 >>>>>>
 1)What are imports and exports
 Imports and exports are JavaScript language features that allow you to include code from one module in another module. The "import" statement is used to include exports from another module in your code, while the "export" statement is used to make values or functions available for other modules to use. Imports and exports allow you to modularize your code and share functionality between different parts of your application.
 
+here are two ways to export values from a module: named exports and default exports. Here's a brief explanation of each and how to import them:
+
+Named exports:
+
+Named exports allow you to export multiple values from a module using named identifiers.
+To export a value as a named export, you use the export keyword followed by the identifier or expression you want to export.
+Example: export const myFunction = () => { ... };
+To import a named export, you use the import keyword followed by the name of the exported identifier in curly braces {}.
+Example: import { myFunction } from './myModule';
+Default export:
+
+Default export allows you to export a single value from a module as the default export.
+To export a value as the default export, you use the export default keyword followed by the identifier or expression you want to export.
+Example: export default myFunction;
+To import the default export, you use the import keyword followed by any identifier of your choice.
+Example: import myFunction from './myModule';
+Here's a summary of the import syntax for named and default exports:
+
+Named exports:
+// Exporting
+export const myFunction = () => { ... };
+// Importing
+import { myFunction } from './myModule';
+
+Default export:
+// Exporting
+export default myFunction;
+// Importing
+import myFunction from './myModule';
+
 2)Input tag not working??
 A component in React is updated when its state or props change. React will re-render the component whenever a change is detected, which ensures that the component's output is updated with the latest data.
 When you create a input tag in react and try to enter input in it you are not able to do it because
