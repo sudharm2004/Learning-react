@@ -639,6 +639,7 @@ For More Understanding:-https://projects.wojtekmaj.pl/react-lifecycle-methods-di
 
 9)Research Question:-
 I)Why can i make componentDidMount async but i cannot make callback function in useeffect async
+https://dev.to/stlnick/useeffect-and-async-4da8
 componentDidMount is a lifecycle method of class components. It's called after the component has mounted and the initial render is complete. This means that the component's DOM nodes have been created and added to the page, and the component's initial state and props have been set. componentDidMount is a good place to perform side effects like making an API call or setting up an event listener.
 
 useEffect, on the other hand, is a hook that allows you to synchronize a component with an external system. For example, you can use useEffect to start a timer or to make an API call and update the component's state based on the response. Unlike componentDidMount, useEffect runs after every render, which includes the initial render. This means that if you want to run a side effect only once, you need to specify this by providing an empty array as the second argument to useEffect.
