@@ -589,6 +589,9 @@ state2=value
 4)Props in class based components
 To access props in class-based components, you can use the "this.props" object. Props are passed to the component as arguments to the constructor and can be accessed using the "this" keyword inside the component.
 
+6)Why do we have to call call super(props) in react class based components?
+https://techdoma.in/react-16-tutorial/why-do-we-have-to-call-superprops-in-constructor-react
+
 5)state and updating states in class based components
 To use state in class-based components, you need to initialize the state in the constructor of the component.To update the state, you can use the setState method, which takes an object that represents the updated state. You should never modify the state directly using assignment (e.g. this.state.count = 1).
 for eg:-
